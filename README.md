@@ -6,10 +6,10 @@ A webpack 4 based boilerplate for web apps.
 
 - clone the repo via `git clone https://github.com/xitara/webpack-boilerplate.git`
 - `cd webpack-es6-sass-boilerplate`
-- run `npm install` to fetch all the dependencies
-- run `npm run start` to start the [webpack-dev-server](https://github.com/webpack/webpack-dev-server) (`localhost:8080` will be opened automatically)
+- run `yarn install` to fetch all the dependencies
+- run `yarn run start` to start the [webpack-dev-server](https://github.com/webpack/webpack-dev-server) (`localhost:8080` will be opened automatically)
 - start developing
-- when you are done, run `npm run build` to get the production version of your app
+- when you are done, run `yarn run build` to get the production version of your app
 
 ## Commands
 
