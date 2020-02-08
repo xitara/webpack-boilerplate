@@ -8,4 +8,5 @@ module.exports = {
   src: resolveApp('src'),
   build: resolveApp('build'),
   static: resolveApp('static'),
+  icons: resolveApp('src/images/_icons'),
 };

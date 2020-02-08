@@ -1,14 +1,17 @@
 // Variables
-@import "base/variables";
+@import 'base/variables';
 
 // Mixins
-@import "base/mixins";
+@import 'base/mixins';
+
+// Fonts
+@import 'base/fonts';
 
 /* Body */
-@import "partials/body";
+@import 'partials/body';
 
 /* Header */
-@import "partials/header";
+@import 'partials/header';
 
 /* Footer */
-@import "partials/footer";
+@import 'partials/footer';
