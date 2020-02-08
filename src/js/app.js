@@ -1,6 +1,6 @@
-import { qs, qsa, $on, $delegate } from './utils';
+// import { qs, qsa, $on, $delegate } from './utils';
 
-console.log(qs);
+// console.log(qs);
 
 import '../scss/styles.scss';
 
