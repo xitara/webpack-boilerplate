@@ -1,6 +1,7 @@
 # Webpack ES6+ Sass Boilerplate [![devDependency Status](https://david-dm.org/xitara/webpack-boilerplate/dev-status.svg)](https://david-dm.org/xitara/webpack-boilerplate/?type=dev) [![Known Vulnerabilities](https://snyk.io/test/github/xitara/webpack-boilerplate/badge.svg)](https://snyk.io//test/github/xitara/webpack-boilerplate)
 
 A webpack 4 based boilerplate for web apps.
+Forked from [https://github.com/vadimmarkov/webpack-es6-sass-boilerplate](https://github.com/vadimmarkov/webpack-es6-sass-boilerplate)
 
 ## Getting started
 
