@@ -1,0 +1,41 @@
+/* ************************************************************************************ */
+/* Breakpoint Settings */
+
+// min or max -> min: mobile first
+$media-direction: min;
+
+// Breakpoints (*-l means landscape, portrait ist default to mobile sizes)
+$breakpoints: (
+    'default': '',
+    'xxs': 480px,
+    'xs': 667px,
+    's': 800px,
+    'm': 1024px,
+    'l': 1280px,
+    'xl': 1680px,
+    'xxl': 1920px,
+    'phone': 320px,
+    'phone-l': 480px,
+    'tablet': 768px,
+    'tablet-l': 1024px,
+    'large-desktop': 75rem,
+    'desktop': 60rem,
+    'mobile-menu': 48rem
+);
+
+/* Breakpoint Mixin */
+@mixin breakpoint($breakpoint, $direction: $media-direction) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (#{$direction}-width: #{map-get($breakpoints, $breakpoint)}) {
+            @content;
+        }
+    }
+    @else if unitless($breakpoint) {
+        $breakpoint: $breakpoint + 0px;
+
+        @media (#{$direction}-width: $breakpoint) {
+            @content;
+        }
+    }
+}
+/* ************************************************************************************ */
