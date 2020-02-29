@@ -20,7 +20,7 @@ $breakpoints: (
     'tablet-l': 1024px,
     'large-desktop': 75rem,
     'desktop': 60rem,
-    'mobile-menu': 48rem
+    'mobile-menu': 48rem,
 );
 
 /* Breakpoint Mixin */
@@ -29,8 +29,7 @@ $breakpoints: (
         @media (#{$direction}-width: #{map-get($breakpoints, $breakpoint)}) {
             @content;
         }
-    }
-    @else if unitless($breakpoint) {
+    } @else if unitless($breakpoint) {
         $breakpoint: $breakpoint + 0px;
 
         @media (#{$direction}-width: $breakpoint) {
