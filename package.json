@@ -1,6 +1,6 @@
 {
   "name": "webpack-es6-sass-boilerplate",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Webpack based boilerplate for building web apps",
   "author": "Manuel Burghammer",
   "license": "MIT",
@@ -64,7 +64,8 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2",
-    "webpack-stats-plugin": "0.3.1"
+    "webpack-stats-plugin": "0.3.1",
+    "postcss": "^7.0.27"
   },
   "browserslist": {
     "production": [
