@@ -4,14 +4,13 @@
 ### Custom ###
 build
 stats.json
-vendor
-composer.lock
 assets
 src/**/*.css*
 yarn.lock
 *.map
 
 ### Composer ###
+composer.lock
 composer.phar
 /vendor/
 
