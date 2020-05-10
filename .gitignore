@@ -8,6 +8,12 @@ assets
 src/**/*.css*
 yarn.lock
 *.map
+/index.html
+/favicon*
+/robots.txt
+/humans.txt
+/manifest.json
+*sublime-*
 
 ### Composer ###
 composer.lock

@@ -1,5 +1,8 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+const BrotliPlugin = require('brotli-webpack-plugin');
+// const LiveReloadPlugin = require('webpack-livereload-plugin');
 const paths = require('./paths');
 
 module.exports = {
@@ -19,13 +22,14 @@ module.exports = {
                 loader: 'babel-loader',
             },
             {
-                test: /\.(css|scss)$/,
+                test: /\.(sa|sc|c)ss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
                             importLoaders: 2,
+                            url: false,
                             sourceMap: true,
                         },
                     },
@@ -34,6 +38,10 @@ module.exports = {
                         options: {
                             plugins: () => [require('autoprefixer'), require('postcss-flexbugs-fixes')],
                             sourceMap: true,
+                            plugins: [
+                                require('autoprefixer'),
+                            ],
+                            processCssUrls: false,
                         },
                     },
                     {
@@ -80,11 +88,22 @@ module.exports = {
         new MiniCssExtractPlugin({
             // filename: 'assets/css/[name].[hash:8].css',
             filename: 'assets/css/[name].css',
+            chunkFilename: 'assets/css/[name].[id].css',
         }),
         new CopyWebpackPlugin([{ from: paths.static }]),
         new CopyWebpackPlugin([{
             from: paths.icons,
             to: 'assets/images/_icons'
         }]),
+        new CompressionPlugin({
+            exclude: /\.yaml/,
+        }),
+        new BrotliPlugin({
+            asset: '[path].br[query]',
+            test: /\.(js|css|html|svg)$/,
+            threshold: 10240,
+            minRatio: 0.8
+        }),
+        // new LiveReloadPlugin(),
     ],
 };
