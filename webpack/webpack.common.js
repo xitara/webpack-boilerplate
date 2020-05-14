@@ -56,32 +56,32 @@ module.exports = {
                 test: /\.html$/,
                 use: 'html-loader',
             },
-            {
-                test: /\.(woff2?|eot|ttf|otf)$/,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        publicPath: 'assets/fonts',
-                        outputPath: 'assets/fonts',
-                        // name: '[name].[hash:8].[ext]',
-                        name: '[name].[ext]',
-                        esModule: false,
-                    },
-                },
-            },
-            {
-                test: /\.(gif|ico|jpe?g|png|svg|webp)$/,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        publicPath: 'assets/images',
-                        outputPath: 'assets/images',
-                        // name: '[name].[hash:8].[ext]',
-                        name: '[name].[ext]',
-                        esModule: false,
-                    },
-                },
-            },
+			{
+				test: /\.(woff2?|eot|ttf|otf)$/,
+				use: {
+					loader: 'file-loader',
+					options: {
+						publicPath: 'assets/fonts',
+						outputPath: 'assets',
+						// name: '[name].[hash:8].[ext]',
+						name: '[path][name].[ext]',
+						esModule: false,
+					},
+				},
+			},
+			{
+				test: /\.(gif|ico|jpe?g|png|svg|webp)$/,
+				use: {
+					loader: 'file-loader',
+					options: {
+						publicPath: 'assets/images',
+						outputPath: 'assets',
+						// name: '[name].[hash:8].[ext]',
+						name: '[path][name].[ext]',
+						esModule: false,
+					},
+				},
+			},
         ],
     },
     plugins: [
