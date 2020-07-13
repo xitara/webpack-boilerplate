@@ -30,8 +30,8 @@ const production = {
         }),
         new CssoWebpackPlugin(),
         // new PurgeCssPlugin({
-        //     paths: glob.sync(`**/*.htm*`),
-        //     defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+            // paths: glob.sync(`**/*.htm*`),
+            // defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
         // }),
     ],
     // devtool: 'source-map',

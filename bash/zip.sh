@@ -1,11 +1,9 @@
 #!/bin/bash
 
+. $(pwd)"/bash/config.sh"
+
 yarn build
 
-STORAGE=(*.php assets vendor config content layouts meta pages partials theme.yaml version.yaml)
-FILE=$(cat package.json | jq -r .name)
-TARGET="$(pwd)/.."
-TEMP_DIR="/tmp"
 MYDATE=$(date +"%Y-%m-%d_%H%M%S")
 
 if [ -d "$TARGET/$FILE" ]; then
@@ -18,10 +16,10 @@ for i in "${STORAGE[@]}"; do
     echo "$i";
 
     if [ -d "$i" ] || [ -f "$i" ]; then
-        echo cp -r "$i" "$TARGET/$FILE/$i"
+        cp -r "$i" "$TARGET/$FILE/$i"
     fi
 done
 
-cd $TEMP_DIR && zip -r $TARGET/$FILE.zip $FILE -x *.map*
+cd $TARGET && zip -r $(pwd)/../$FILE.zip $FILE -x *.map*
 
-rm -Rf $TEMP_DIR/$FILE
+rm -Rf $TARGET/$FILE

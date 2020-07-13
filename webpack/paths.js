@@ -6,7 +6,7 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 module.exports = {
   src: resolveApp('src'),
-  build: resolveApp('build'),
+  build: resolveApp(''),
   static: resolveApp('static'),
   icons: resolveApp('src/images/_icons'),
 };

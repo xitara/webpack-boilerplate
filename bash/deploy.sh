@@ -1,10 +1,12 @@
 #!/bin/bash
 
+. $(pwd)"/bash/config.sh"
+
 yarn build
 
-STORAGE=(*.php assets vendor config content layouts meta pages partials theme.yaml version.yaml)
-FILE=$(cat package.json | jq -r .name)
-TARGET="$(pwd)/.."
+# STORAGE=(*.php assets classes controllers lang partials updates vendor config content layouts meta pages partials theme.yaml plugin.yaml version.yaml)
+# FILE=$(cat package.json | jq -r .name)
+# TARGET="$(pwd)/.."
 MYDATE=$(date +"%Y-%m-%d_%H%M%S")
 
 if [ -d "$TARGET/$FILE" ]; then

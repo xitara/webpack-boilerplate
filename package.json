@@ -1,7 +1,7 @@
 {
-    "name": "oc-plugin-boilerplate",
-    "version": "0.4.2",
-    "description": "Webpack based boilerplate for OctoberCMS including ES6, Babel, Sass",
+    "name": "la-theme",
+    "version": "0.5.3",
+    "description": "Lady-Anja theme clone for toolbox4",
     "author": "Manuel Burghammer",
     "license": "MIT",
     "repository": {
@@ -9,16 +9,18 @@
         "url": "https://github.com/xitara/webpack-boilerplate.git"
     },
     "scripts": {
-        "install": "chmod 755 ./bash/* && yarn build",
+        "install": "chmod 755 ./bash -R -c && yarn build",
         "cleanup": "rimraf ./stats.json && rimraf ./manifest.json && rimraf ./node_modules && rimraf ./vendor && rimraf yarn*.lo* && rimraf composer.lock && rimraf ./favicon.ico* && rimraf ./assets && rimraf theme.yaml* && rimraf version.yaml* && rimraf robots.txt",
         "start": "webpack-dev-server --open --mode development --progress --display-error-details",
         "dwatch": "webpack --watch --mode development --progress --display-error-details",
         "watch": "webpack --watch --mode production --progress --display-error-details",
         "dbuild": "webpack --mode development --progress --display-error-details",
         "build": "webpack --mode production --progress --display-error-details",
+        "test": "bash ./bash/test.sh",
         "zip": "./bash/zip.sh",
         "deploy": "./bash/deploy.sh",
-        "fly": "yarn install && composer install",
+        "ftp": "./bash/ftp.sh",
+        "fly": "./bash/fly.sh",
         "check-eslint-config": "eslint --print-config .eslintrc | eslint-config-prettier-check",
         "check-stylelint-config": "stylelint-config-prettier-check",
         "lint-code": "eslint 'src/js/**/*.js'",
@@ -74,6 +76,7 @@
         "webpack-bundle-analyzer": "^3.6.1",
         "webpack-cli": "^3.3.11",
         "webpack-dev-server": "^3.10.3",
+        "webpack-livereload-plugin": "^2.3.0",
         "webpack-merge": "^4.2.2",
         "webpack-stats-plugin": "0.3.1"
     },
@@ -104,5 +107,9 @@
             "stylelint --fix",
             "git add"
         ]
+    },
+    "dependencies": {
+        "glightbox": "^3.0.0",
+        "micromodal": "^0.4.6"
     }
 }
