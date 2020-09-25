@@ -2,7 +2,8 @@
 
 A webpack 4 based boilerplate for OctoberCMS or other web projects.
 In OctoberCMS clone the repo in the plugin or theme you want.
-Otherwise clone the repo in a folder, you want and change `STORAGE` in `bash/config.sh`
+Otherwise clone the repo in a folder you want and change
+`STORAGE` in `bash/config.sh` if needed
 
 ## Dependencies
 
@@ -22,31 +23,35 @@ Otherwise clone the repo in a folder, you want and change `STORAGE` in `bash/con
 
 ## Commands
 
-- `cleanup` - reset boilerplate but keeps all files in src
 - `start` - start the dev server
 - `watch` - start webpack --watch
-- `dwatch` - start webpack --watch
-- `build` - create build
-- `dbuild` - create development-build
-- `zip` - creates a zip-file with all relevant files/folders
-- `deploy` - creates runnable folder one level down
-- `ftp` - runs `yarn deploy` and upload files/folders with lftp
-- `fly` - runs `composer install` if possible after `yarn install`
+- `dwatch` - start webpack --watch in development-mode
+- `build` - create build in `build` folder
+- `dbuild` - create development build in `build` folder
+- `zip` - build project and pack relevant folder/files to a zip-file one level down
+- `deploy` - build project and deploy to a folder name in package.json one level down with backup if folder exists
+- `ftp` - uploads build project per FTP. Configs in ./bash/config.sh
+- `fly` - runs yarn install and, if composer.json exists, composer install
 - `analyze` - analyze your production bundle
 - `lint-code` - run an ESLint check
 - `lint-style` - run a Stylelint check
 - `check-eslint-config` - check if ESLint config contains any rules that are unnecessary or conflict with Prettier
 - `check-stylelint-config` - check if Stylelint config contains any rules that are unnecessary or conflict with Prettier
-- `clear` - delete build-folder
-- `cleanup` - delete build-folder and node_modules
+- `cleanup` - delete build-folder, node_modulesand other generated files/folders. files in src and static stay untouched
 
-## Included
+## OctoberCMS specific commands
+- `oc-init-theme` - adds folders to create a complete [OctoberCMS](https://ocotbercms.com) theme boilerplate
+- `oc-kill-theme` - removes folders for OctoberCMS theme. Handle with care, it's not recoverable
 
-- [Webpack 4](https://github.com/webpack/webpack) JavaScript module bundler
-- [Autoprefixer](https://github.com/postcss/autoprefixer) for vendor prefixes (browser compability)
-- [Babel 7](https://babeljs.io/) compiler ES6+ code into a backwards compatible version of JavaScript
-- [Prettier](https://prettier.io/) an opinionated code formatter
-- [SASS](http://sass-lang.com) preprocessor for CSS
-- [Eslint](https://eslint.org) JavaScript linter
-- [Stylelint](http://stylelint.io) CSS/SASS linter
-- [lint-staged](https://github.com/okonet/lint-staged) run linting and formatting your files that are marked as "staged" via `git add` before you commit.
+## OctoberCMS specific settings
+
+- add the following lines to your `.htaccess` to access the compiled index.html inside your theme dev:
+- it works with and without translation-prefix
+```
+##
+## enable display index.html for development
+##
+RewriteRule ^themes/.*/index\.html - [L,NC]
+RewriteRule ^.*/themes/(.*)/index\.html /themes/$1/index\.html [L,NC]
+RewriteRule ^.*/themes/(.*)/(assets|resources)/(.*) /themes/$1/$2/$3 [L,NC]
+```
