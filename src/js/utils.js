@@ -1,3 +1,8 @@
+/**
+ * initiate list of event listeners
+ *
+ * @type {Array}
+ */
 let _listeners = [];
 
 /**
@@ -37,9 +42,7 @@ export const $on = (target, type, callback, capture) => {
  * removeEventListener
  *
  * @param {Element|Window} target Target Element
- * @param {string} type Event name to bind to
- * @param {Function} callback Event callback
- * @param {boolean} [capture] Capture the event
+ * @param {string} type Event name to remove
  */
 export const $off = (target, type) => {
     for (let index in _listeners) {
@@ -55,12 +58,23 @@ export const $off = (target, type) => {
     }
 };
 
+/**
+ * trigger event
+ *
+ * @param  {Element} el   element to trigger
+ * @param  {string} type event-type (e.g. click) to trigger
+ */
 export const $trigger = (target, type) => {
     if (target) {
         target.dispatchEvent(new Event(type));
     }
 };
 
+/**
+ * Scroll to a given position
+ *
+ * @param  {integer} position position in pixel from top
+ */
 export const $scroll = (position) => {
     window.scrollTo({
         top: position,
@@ -95,6 +109,13 @@ export const $delegate = (target, selector, type, handler, capture) => {
     $on(target, type, dispatchEvent, !!capture);
 };
 
+/**
+ * trigger event
+ *
+ * @param  {Element} el   element to trigger
+ * @param  {string} type event-type (e.g. click) to trigger
+ * @depricated
+ */
 export const triggerEvent = (el, type) => {
     if ('createEvent' in document) {
         // modern browsers, IE9+
