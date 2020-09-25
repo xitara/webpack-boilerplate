@@ -1,8 +1,26 @@
+// Slider SCSS (https://glidejs.com/)
+// @import '@glidejs/glide/src/assets/sass/glide.core';
+// @import '@glidejs/glide/src/assets/sass/glide.theme'; // Optional
+// @import 'partials/glidejs'; // Custom Lightbox SCSS
+
+// Lightbox SCSS (https://github.com/biati-digital/glightbox)
+// @import 'glightbox/src/postcss/glightbox.css';
+// @import 'partials/glightbox'; // Custom Lightbox SCSS
+
+// Tailwindcss
+// see tailwind.config.js for configurations
+/* purgecss start ignore */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+/* purgecss end ignore */
+
+@import 'tailwindcss/utilities';
+
 // Variables
 @import 'base/variables';
 
 // Breakpoints
-// @import 'base/breakpoints';
+@import 'base/breakpoints';
 
 // Mixins
 @import 'base/mixins';
@@ -18,3 +36,6 @@
 
 /* Footer */
 @import 'partials/footer';
+
+/* froala and fixes */
+@import 'partials/froala';

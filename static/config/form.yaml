@@ -1,0 +1,49 @@
+tabs:
+    fields:
+        name:
+            label: xitara.core::theme.site.name
+            default: xitara Werbeagentur
+            span: auto
+            tab: xitara.core::theme.tab.site
+        color:
+            label: xitara.core::theme.site.color
+            default: '#ffffff'
+            span: left
+            tab: xitara.core::theme.tab.site
+        author:
+            label: xitara.core::theme.site.author
+            default: xitara GmbH
+            span: auto
+            tab: xitara.core::theme.tab.site
+        publisher:
+            label: xitara.core::theme.site.publisher
+            default: xitara GmbH
+            span: auto
+            tab: xitara.core::theme.tab.site
+        copyright:
+            label: xitara.core::theme.site.copyright
+            default: xitara GmbH
+            span: auto
+            tab: xitara.core::theme.tab.site
+        phone:
+            label: xitara.core::theme.site.phone
+            span: auto
+            tab: xitara.core::theme.tab.site
+        email:
+            label: xitara.core::theme.site.email
+            span: auto
+            tab: xitara.core::theme.tab.site
+        favicon_ico:
+            label: xitara.core::theme.site.favicon_ico
+            commentAbove: xitara.core::theme.site.favicon_ico_comment
+            span: auto
+            type: mediafinder
+            mode: image
+            tab: xitara.core::theme.tab.site
+        favicon:
+            label: xitara.core::theme.site.favicon
+            commentAbove: xitara.core::theme.site.favicon_comment
+            span: auto
+            type: mediafinder
+            mode: image
+            tab: xitara.core::theme.tab.site

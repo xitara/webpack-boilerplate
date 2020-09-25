@@ -1,4 +1,4 @@
-#!/bin/bash
+#!bash
 
 . $(pwd)"/bash/config.sh"
 . $(pwd)"/bash/deploy.sh"

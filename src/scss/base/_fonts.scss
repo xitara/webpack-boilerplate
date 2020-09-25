@@ -4,12 +4,10 @@
     font-style: normal;
     font-weight: 400;
     src: url('../fonts/roboto-v20-latin-regular.eot');
-    /* IE9 Compat Modes */
     src: local('Roboto'), local('Roboto-Regular'),
-        /* IE6-IE8 */ url('../fonts/roboto-v20-latin-regular.eot?#iefix')
-            format('embedded-opentype'),
-        /* Super Modern Browsers */ url('../fonts/roboto-v20-latin-regular.woff2') format('woff2'),
-        /* Modern Browsers */ url('../fonts/roboto-v20-latin-regular.woff') format('woff'),
-        /* Safari, Android, iOS */ url('../fonts/roboto-v20-latin-regular.ttf') format('truetype'),
-        /* Legacy iOS */ url('../fonts/roboto-v20-latin-regular.svg#Roboto') format('svg');
+        url('../fonts/roboto-v20-latin-regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/roboto-v20-latin-regular.woff2') format('woff2'),
+        url('../fonts/roboto-v20-latin-regular.woff') format('woff'),
+        url('../fonts/roboto-v20-latin-regular.ttf') format('truetype'),
+        url('../fonts/roboto-v20-latin-regular.svg#Roboto') format('svg');
 }

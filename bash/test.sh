@@ -1,3 +1,6 @@
 #!bash
 
-echo test
+. $(pwd)"/bash/config.sh"
+
+echo "test"
+echo $FILE

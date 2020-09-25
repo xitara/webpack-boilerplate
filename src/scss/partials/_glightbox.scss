@@ -1,0 +1,22 @@
+#glightbox-body {
+    .goverlay {
+        background: rgba(0, 0, 0, 0.75);
+    }
+
+    .gnext,
+    .gprev {
+        top: 45%;
+    }
+
+    .gslide-description {
+        background: rgba(0, 0, 0, 0.75);
+
+        .gslide-title {
+            color: #fff;
+        }
+
+        .gslide-desc {
+            color: #fff;
+        }
+    }
+}

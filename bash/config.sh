@@ -1,15 +1,14 @@
-#!/bin/bash
+#!bash
 
 # list of files and folder to pack/deploy
+# STORAGE=(*.php assets classes controllers lang partials updates vendor config content layouts meta pages partials theme.yaml plugin.yaml version.yaml)
 STORAGE=(*.php assets classes controllers tests lang partials updates vendor config content layouts meta pages partials backend theme.yaml plugin.yaml version.yaml phpunit.xml)
 
-# filename. default name from package.json
-# FILE="core-deploy"
+# filename. default name from package.json example with jq (linux)
 FILE=$(cat package.json | jq -r .name)
 
 # target path
-# TARGET="$(pwd)/.."
-TARGET="/tmp"
+TARGET="$(pwd)/.."
 
 # ftp for deploy
 FTP_HOST=""

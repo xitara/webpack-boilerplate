@@ -5,8 +5,7 @@ const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 module.exports = {
-  src: resolveApp('src'),
-  build: resolveApp(''),
-  static: resolveApp('static'),
-  icons: resolveApp('src/images/_icons'),
+    src: resolveApp('src'),
+    build: resolveApp(''),
+    static: resolveApp('static'),
 };
