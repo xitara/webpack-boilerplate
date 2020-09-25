@@ -25,7 +25,7 @@
         "check-stylelint-config": "stylelint-config-prettier-check",
         "cleanup": "rimraf stats.json && rimraf manifest.json && rimraf vendor && rimraf yarn*.lo* && rimraf composer.lock && rimraf favicon.ico* && rimraf assets && rimraf theme.yaml* && rimraf version.yaml* && rimraf config && rimraf index.html && rimraf robots.txt && rimraf node_modules",        "start": "webpack-dev-server --open --mode development --progress --display-error-details",
         "oc-init-theme": "mkdir content && mkdir layouts && mkdir pages && mkdir partials",
-        "oc-kill-theme": "rimraf content && rimraf layouts && rimraf pages && rimraf partials"
+        "oc-kill-theme": "rimraf content && rimraf layouts && rimraf pages && rimraf partials && rimraf static/theme.yaml && rimraf static/config"
     },
     "devDependencies": {
         "@babel/core": "^7.11.6",

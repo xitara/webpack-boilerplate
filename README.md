@@ -40,8 +40,9 @@ Otherwise clone the repo in a folder you want and change
 - `cleanup` - delete build-folder, node_modulesand other generated files/folders. files in src and static stay untouched
 
 ## OctoberCMS specific commands
+
 - `oc-init-theme` - adds folders to create a complete [OctoberCMS](https://ocotbercms.com) theme boilerplate
-- `oc-kill-theme` - removes folders for OctoberCMS theme. Handle with care, it's not recoverable
+- `oc-kill-theme` - removes folders for OctoberCMS theme including `theme.yaml` and `conifg` from static. Handle with care, it's not recoverable
 
 ## OctoberCMS specific settings
 
