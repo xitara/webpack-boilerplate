@@ -23,7 +23,8 @@
         "lint-style": "stylelint 'src/scss/**/*.{css,scss}'",
         "check-eslint-config": "eslint --print-config .eslintrc | eslint-config-prettier-check",
         "check-stylelint-config": "stylelint-config-prettier-check",
-        "cleanup": "rimraf stats.json && rimraf manifest.json && rimraf vendor && rimraf yarn*.lo* && rimraf composer.lock && rimraf favicon.ico* && rimraf assets && rimraf theme.yaml* && rimraf version.yaml* && rimraf config && rimraf index.html && rimraf robots.txt && rimraf node_modules",        "start": "webpack-dev-server --open --mode development --progress --display-error-details",
+        "cleanup": "rimraf stats.json && rimraf manifest.json && rimraf vendor && rimraf yarn*.lo* && rimraf composer.lock && rimraf favicon.ico* && rimraf assets && rimraf theme.yaml* && rimraf version.yaml* && rimraf config && rimraf index.html && rimraf robots.txt && rimraf node_modules",
+        "start": "webpack-dev-server --open --mode development --progress --display-error-details",
         "oc-init-theme": "mkdir content && mkdir layouts && mkdir pages && mkdir partials",
         "oc-kill-theme": "rimraf content && rimraf layouts && rimraf pages && rimraf partials && rimraf static/theme.yaml && rimraf static/config"
     },
@@ -104,16 +105,15 @@
     },
     "lint-staged": {
         "*.js": [
-            "eslint --fix",
-            "git add"
+            "eslint --fix"
         ],
         "*.{css,scss}": [
-            "stylelint --fix",
-            "git add"
+            "stylelint --fix"
         ]
     },
     "dependencies": {
         "@glidejs/glide": "^3.4.1",
-        "glightbox": "^3.0.5"
+        "glightbox": "^3.0.5",
+        "mark.js": "^8.11.1"
     }
 }
