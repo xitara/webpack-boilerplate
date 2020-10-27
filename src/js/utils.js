@@ -109,6 +109,23 @@ export const $delegate = (target, selector, type, handler, capture) => {
     $on(target, type, dispatchEvent, !!capture);
 };
 
+export const $fetch = async (url, method, mode = 'cors') => {
+    let data = await fetch(url, {
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: method,
+        mode: mode,
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        });
+
+    return data;
+};
+
 /**
  * trigger event
  *
@@ -116,16 +133,16 @@ export const $delegate = (target, selector, type, handler, capture) => {
  * @param  {string} type event-type (e.g. click) to trigger
  * @depricated
  */
-export const triggerEvent = (el, type) => {
-    if ('createEvent' in document) {
-        // modern browsers, IE9+
-        let e = document.createEvent('HTMLEvents');
-        e.initEvent(type, false, true);
-        el.dispatchEvent(e);
-    } else {
-        // IE 8
-        let e = document.createEventObject();
-        e.eventType = type;
-        el.fireEvent('on' + e.eventType, e);
-    }
-};
+// export const triggerEvent = (el, type) => {
+//     if ('createEvent' in document) {
+//         // modern browsers, IE9+
+//         let e = document.createEvent('HTMLEvents');
+//         e.initEvent(type, false, true);
+//         el.dispatchEvent(e);
+//     } else {
+//         // IE 8
+//         let e = document.createEventObject();
+//         e.eventType = type;
+//         el.fireEvent('on' + e.eventType, e);
+//     }
+// };
