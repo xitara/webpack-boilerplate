@@ -1,3 +1,5 @@
+import Mark from 'mark.js';
+
 /**
  * initiate list of event listeners
  *
@@ -75,11 +77,11 @@ export const $trigger = (target, type) => {
  *
  * @param  {integer} position position in pixel from top
  */
-export const $scroll = (position) => {
+export const $scroll = (position, left = 0, behavior = 'smooth') => {
     window.scrollTo({
         top: position,
-        left: 0,
-        behavior: 'smooth',
+        left: left,
+        behavior: behavior,
     });
 };
 
@@ -109,23 +111,44 @@ export const $delegate = (target, selector, type, handler, capture) => {
     $on(target, type, dispatchEvent, !!capture);
 };
 
-/**
- * trigger event
- *
- * @param  {Element} el   element to trigger
- * @param  {string} type event-type (e.g. click) to trigger
- * @depricated
- */
-export const triggerEvent = (el, type) => {
-    if ('createEvent' in document) {
-        // modern browsers, IE9+
-        let e = document.createEvent('HTMLEvents');
-        e.initEvent(type, false, true);
-        el.dispatchEvent(e);
-    } else {
-        // IE 8
-        let e = document.createEventObject();
-        e.eventType = type;
-        el.fireEvent('on' + e.eventType, e);
+export const $fetch = async (url, method, mode = 'cors') => {
+    let data = await fetch(url, {
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: method,
+        mode: mode,
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        });
+
+    return data;
+};
+
+export const $mark = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const highlight = urlParams.get('highlight');
+
+    /**
+     * highlight search results
+     * active with 'highlight=[TEXT]' as query-paramter
+     */
+    if (highlight !== null) {
+        const instance = new Mark('main');
+        instance.mark(highlight, {
+            separateWordSearch: false,
+        });
+
+        /**
+         * scroll first element in center of viewport
+         */
+        qs('mark[data-markjs]').scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'center',
+        });
     }
 };

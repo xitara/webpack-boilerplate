@@ -1,6 +1,6 @@
 {
     "name": "webpack-boilerplate",
-    "version": "0.7.2",
+    "version": "0.7.4",
     "description": "Webpack based boilerplate including ES6, Babel, Sass and much more",
     "author": "Manuel Burghammer",
     "license": "MIT",
@@ -19,8 +19,8 @@
         "ftp": "bash ./bash/ftp.sh",
         "fly": "yarn install && bash ./bash/composer.sh",
         "analyze": "webpack-bundle-analyzer ./stats.json",
-        "lint-code": "eslint 'src/js/**/*.js'",
-        "lint-style": "stylelint 'src/scss/**/*.{css,scss}'",
+        "lint-code": "eslint 'src/js/**/*.js' --fix",
+        "lint-style": "stylelint 'src/scss/**/*.{css,scss}' --fix",
         "check-eslint-config": "eslint --print-config .eslintrc | eslint-config-prettier-check",
         "check-stylelint-config": "stylelint-config-prettier-check",
         "cleanup": "rimraf stats.json && rimraf manifest.json && rimraf vendor && rimraf yarn*.lo* && rimraf composer.lock && rimraf favicon.ico* && rimraf assets && rimraf theme.yaml* && rimraf version.yaml* && rimraf config && rimraf index.html && rimraf robots.txt && rimraf node_modules",
@@ -112,8 +112,10 @@
         ]
     },
     "dependencies": {
-        "@glidejs/glide": "^3.4.1",
         "glightbox": "^3.0.5",
-        "mark.js": "^8.11.1"
+        "mark.js": "^8.11.1",
+        "simplebar": "^5.3.0",
+        "tiny-slider": "^2.9.3",
+        "webpack-livereload-plugin": "^2.3.0"
     }
 }

@@ -5,6 +5,7 @@
 yarn build
 
 MYDATE=$(date +"%Y-%m-%d_%H%M%S")
+FILE="deploy_"$FILE
 
 if [ -d "$TARGET/$FILE" ]; then
     mv "$TARGET/$FILE" "$TARGET/$FILE"_$MYDATE

@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-undef
 module.exports = {
     purge: {
-        enabled: false,
+        // enabled: false,
         /* eslint-disable */
         content: [
             './src/**/*.html',
