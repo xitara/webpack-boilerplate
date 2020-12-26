@@ -21,7 +21,7 @@
         "analyze": "webpack-bundle-analyzer ./stats.json",
         "lint-code": "eslint 'src/js/**/*.js' --fix",
         "lint-style": "stylelint 'src/scss/**/*.{css,scss}' --fix",
-        "check-eslint-config": "eslint --print-config .eslintrc | eslint-config-prettier-check",
+        "check-eslint-config": "eslint-config-prettier .eslint",
         "check-stylelint-config": "stylelint-config-prettier-check",
         "cleanup": "rimraf stats.json && rimraf manifest.json && rimraf vendor && rimraf yarn*.lo* && rimraf composer.lock && rimraf favicon.ico* && rimraf assets && rimraf theme.yaml* && rimraf version.yaml* && rimraf config && rimraf index.html && rimraf robots.txt && rimraf node_modules",
         "start": "webpack-dev-server --open --mode development --progress",
