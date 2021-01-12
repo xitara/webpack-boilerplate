@@ -3,6 +3,8 @@
 . $(pwd)"/bash/config.sh"
 . $(pwd)"/bash/deploy.sh"
 
+FILE="deploy_"$FILE
+
 lftp $FTP_HOST << EOF
     set ssl:verify-certificate false
     user $FTP_USER "$FTP_PASS"

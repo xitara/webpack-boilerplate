@@ -1,3 +1,5 @@
+import Mark from 'mark.js';
+
 /**
  * initiate list of event listeners
  *
@@ -75,11 +77,11 @@ export const $trigger = (target, type) => {
  *
  * @param  {integer} position position in pixel from top
  */
-export const $scroll = (position) => {
+export const $scroll = (position, left = 0, behavior = 'smooth') => {
     window.scrollTo({
         top: position,
-        left: 0,
-        behavior: 'smooth',
+        left: left,
+        behavior: behavior,
     });
 };
 
@@ -109,7 +111,23 @@ export const $delegate = (target, selector, type, handler, capture) => {
     $on(target, type, dispatchEvent, !!capture);
 };
 
-export const $fetch = async (url, method, mode = 'cors') => {
+/**
+ * fetch data from url
+ *
+ * for use with cors payload you have to enable put and options in the routing of laravel etc.
+ * Route::match(['put', 'options'], '/', function () {});
+ *
+ * @autor   mburghammer
+ * @date    2020-11-23T22:38:07+01:00
+ * @version 0.0.1
+ * @since   0.0.1
+ * @param   {string}    url     url to fetch data from
+ * @param   {String}    method  method to fetch (GET, POST, PUT, OPTIONS).
+ * @param   {Object}    payload json payload
+ * @param   {String}    mode    mode like cors, no-cors etc.
+ * @return  {object}            json-object
+ */
+export const $fetch = async (url, method = 'POST', payload = {}, mode = 'cors') => {
     let data = await fetch(url, {
         headers: {
             Accept: 'application/json',
@@ -117,32 +135,47 @@ export const $fetch = async (url, method, mode = 'cors') => {
         },
         method: method,
         mode: mode,
+        body: JSON.stringify(payload),
     })
+        .then((response) => {
+            if (response.ok) {
+                return Promise.resolve(response);
+            } else {
+                return Promise.reject(new Error('Failed to load'));
+            }
+        })
         .then((response) => response.json())
         .then((data) => {
             return data;
+        })
+        .catch(function (error) {
+            return Promise.reject(new Error(error));
         });
 
     return data;
 };
 
-/**
- * trigger event
- *
- * @param  {Element} el   element to trigger
- * @param  {string} type event-type (e.g. click) to trigger
- * @depricated
- */
-// export const triggerEvent = (el, type) => {
-//     if ('createEvent' in document) {
-//         // modern browsers, IE9+
-//         let e = document.createEvent('HTMLEvents');
-//         e.initEvent(type, false, true);
-//         el.dispatchEvent(e);
-//     } else {
-//         // IE 8
-//         let e = document.createEventObject();
-//         e.eventType = type;
-//         el.fireEvent('on' + e.eventType, e);
-//     }
-// };
+export const $mark = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const highlight = urlParams.get('highlight');
+
+    /**
+     * highlight search results
+     * active with 'highlight=[TEXT]' as query-paramter
+     */
+    if (highlight !== null) {
+        const instance = new Mark('main');
+        instance.mark(highlight, {
+            separateWordSearch: false,
+        });
+
+        /**
+         * scroll first element in center of viewport
+         */
+        qs('mark[data-markjs]').scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'center',
+        });
+    }
+};

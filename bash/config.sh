@@ -1,8 +1,7 @@
 #!bash
 
 # list of files and folder to pack/deploy
-# STORAGE=(*.php assets classes controllers lang partials updates vendor config content layouts meta pages partials theme.yaml plugin.yaml version.yaml)
-STORAGE=(*.php *.yaml *.xml assets console classes models controllers components tests lang partials updates vendor config content layouts meta pages partials backend)
+STORAGE=(*.php *.xml *.yaml assets backend classes components config console content controllers lang layouts meta models pages partials phpunit.xml plugin.yaml tests theme.yaml updates vendor  version.yaml  views)
 
 # filename. default name from package.json example with jq (linux)
 FILE=$(cat package.json | jq -r .name)

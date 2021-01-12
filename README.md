@@ -1,15 +1,17 @@
-# OctoberCMS Webpack ES6+ Sass Boilerplate [![devDependency Status](https://david-dm.org/xitara/webpack-boilerplate/dev-status.svg)](https://david-dm.org/xitara/webpack-boilerplate/?type=dev) [![Known Vulnerabilities](https://snyk.io/test/github/xitara/webpack-boilerplate/badge.svg)](https://snyk.io//test/github/xitara/webpack-boilerplate)
+# Webpack 5 ES6+ Sass Boilerplate with optional OctoberCMS flavour [![devDependency Status](https://david-dm.org/xitara/webpack-boilerplate/dev-status.svg)](https://david-dm.org/xitara/webpack-boilerplate/?type=dev) [![Known Vulnerabilities](https://snyk.io/test/github/xitara/webpack-boilerplate/badge.svg)](https://snyk.io//test/github/xitara/webpack-boilerplate)
 
-A webpack 4 based boilerplate for OctoberCMS or other web projects.
-In OctoberCMS clone the repo in the plugin or theme you want.
-Otherwise clone the repo in a folder you want and change
+## Description
+
+A webpack 5 based boilerplate for OctoberCMS or other web projects.
+In OctoberCMS clone the repo and copy all files into the plugin or theme you want.
+Otherwise clone the repo to a folder of your choice and change
 `STORAGE` in `bash/config.sh` if needed
 
 ## Dependencies
 
 - `yarn`
-- `bash` to run `zip`, `fly`, `deploy` and `ftp`. I testet on debian/buster
-- `lftp` to upload with ftp by `yarn ftp`
+- `bash` to run `zip`, `fly`, `deploy` and `ftp`, testet on debian/buster
+- `lftp` to upload with ftp by `yarn ftp`, testet on debian/buster
 
 ## Quick start
 
@@ -19,7 +21,7 @@ Otherwise clone the repo in a folder you want and change
 - change settings in `package.json` and `bash/config.sh` if possible
 - run `yarn start` to start the [webpack-dev-server](https://github.com/webpack/webpack-dev-server) (`localhost:8080` will be opened automatically)
 - start developing
-- when you are done, run `yarn run build` to get the production version of your app
+- when you are done, run `yarn build` to get the production version of your app
 
 ## Commands
 
@@ -39,6 +41,25 @@ Otherwise clone the repo in a folder you want and change
 - `check-stylelint-config` - check if Stylelint config contains any rules that are unnecessary or conflict with Prettier
 - `cleanup` - delete build-folder, node_modulesand other generated files/folders. files in src and static stay untouched
 
+## Including
+
+- [webpack 5](https://github.com/webpack/webpack)
+- [tailwindcss](https://tailwindcss.com)
+- [tailwindcss/ui](https://tailwindui.com/)
+- [tailwindcss-plugins](https://github.com/lorisleiva/tailwindcss-plugins)
+- [tailwindcss-typography](https://github.com/tailwindlabs/tailwindcss-typography)
+- [alpinejs](https://github.com/alpinejs/alpine)
+- [glightbox](https://github.com/biati-digital/glightbox)
+- [tiny-slider](https://github.com/ganlanyuan/tiny-slider)
+- [simplebar](https://github.com/Grsmto/simplebar)
+- [mark.js](https://markjs.io/)
+- babel
+- brotli / gzip compression for assets
+- eslint / stylelint
+- husky pre push tests
+- sass
+- purgecss (for sass and tailwindcss)
+
 ## OctoberCMS specific commands
 
 - `oc-init-theme` - adds folders to create a complete [OctoberCMS](https://ocotbercms.com) theme boilerplate
@@ -56,3 +77,9 @@ RewriteRule ^themes/.*/index\.html - [L,NC]
 RewriteRule ^.*/themes/(.*)/index\.html /themes/$1/index\.html [L,NC]
 RewriteRule ^.*/themes/(.*)/(assets|resources)/(.*) /themes/$1/$2/$3 [L,NC]
 ```
+
+# Update 0.8.1
+
+- Update to webpack 5
+- Update all dependencies
+- Add a fetch method to utils.js

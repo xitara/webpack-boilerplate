@@ -17,6 +17,7 @@ yarn.lock
 /bash/config.sh
 *.gz
 *.br
+*manifest*
 
 ### Composer ###
 composer.lock
