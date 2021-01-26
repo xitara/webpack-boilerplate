@@ -1,16 +1,29 @@
 {
-  "extends": [
-    "stylelint-config-recommended",
-    "stylelint-prettier/recommended"
-  ],
-  "plugins": [
-    "stylelint-scss"
-  ],
-  "rules": {
-    "at-rule-no-unknown": null,
-    "scss/at-rule-no-unknown": true,
-    "no-descending-specificity": null,
-    "block-no-empty": null,
-    "no-empty-source": null
-  }
+    "extends": [
+        "stylelint-config-recommended",
+        "stylelint-prettier/recommended"
+    ],
+    "plugins": [
+        "stylelint-scss"
+    ],
+    "rules":
+    {
+        "at-rule-no-unknown": null,
+        "scss/at-rule-no-unknown": [
+            true,
+            {
+                "ignoreAtRules": [
+                    "tailwind",
+                    "apply",
+                    "variants",
+                    "responsive",
+                    "screen"
+                ],
+            }
+        ],
+        "no-descending-specificity": null,
+        "block-no-empty": null,
+        "no-empty-source": null
+    },
+    "ignoreFiles": ["**/static/**"]
 }
