@@ -78,7 +78,7 @@ RewriteRule ^.*/themes/(.*)/index\.html /themes/$1/index\.html [L,NC]
 RewriteRule ^.*/themes/(.*)/(assets|resources)/(.*) /themes/$1/$2/$3 [L,NC]
 ```
 
-# Update 0.8.1
+## Update 0.8.1
 
 - Update to webpack 5
 - Update all dependencies

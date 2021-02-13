@@ -7,7 +7,7 @@ STORAGE=(*.php *.xml *.yaml assets backend classes components config console con
 FILE=$(cat package.json | jq -r .name)
 
 # target path
-TARGET="$(pwd)/.."
+TARGET="/tmp"
 
 # ftp for deploy
 FTP_HOST=""
