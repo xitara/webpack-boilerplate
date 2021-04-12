@@ -179,3 +179,72 @@ export const $mark = () => {
         });
     }
 };
+
+/**
+ * set cookie
+ *
+ * @param  {string} $var      cookie var
+ * @param  {string} $value    cookie value
+ * @param  {integer} $expire cookie expiring time in days. default: 30 days
+ */
+export const $sc = ($var, $value, $expire = 30) => {
+    let date = new Date(this.valueOf());
+    date.setDate(date.getDate() + $expire);
+
+    // eslint-disable-next-line
+    console.log('set cookie: ' + $var + '=' + $value + '; ' + date.toUTCString());
+
+    if (!document.cookie.split('; ').find((row) => row.startsWith($var + '=' + $value))) {
+        document.cookie = $var + '=' + $value + '; expires=' + date.toUTCString();
+    }
+};
+
+/**
+ * check cookie
+ *
+ * @param  {string} $var      cookie var
+ * @param  {string} $value    cookie value
+ * @return {null|bool|string}]     value if cookie exists and $value is null, true if value is given and same value as in cookie, false if value is given and not the same value as in cookie, null if $var not exists
+ */
+export const $cc = ($var, $value = null) => {
+    // eslint-disable-next-line
+    console.log('check cookie: ' + $var + '=' + $value);
+
+    if (document.cookie.split(';').some((item) => item.trim().startsWith($var + '='))) {
+        const value = document.cookie
+            .split('; ')
+            .find((row) => row.startsWith($var + '='))
+            .split('=')[1];
+
+        if ($value === null) {
+            return value;
+        }
+
+        if ($value == value) {
+            return true;
+        }
+
+        return false;
+    }
+
+    return null;
+};
+
+/**
+ * delete cookie
+ *
+ * @param  {string} $var      cookie var
+ * @param  {string} $value    cookie value
+ * @return {bool}     true if cookie exists, false if no cookie found
+ */
+export const $dc = ($var, $value) => {
+    // eslint-disable-next-line
+    console.log('delete cookie: ' + $var + '=' + $value);
+
+    if (!document.cookie.split('; ').find((row) => row.startsWith($var + '=' + $value))) {
+        document.cookie = $var + '=' + $value + '; expires=Thu, 01 Jan 1970 00:00:01 GMT';
+        return true;
+    }
+
+    return false;
+};
