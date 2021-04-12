@@ -10,6 +10,7 @@
     },
     "scripts": {
         "install": "chmod 0755 ./bash/* && yarn build && bash ./bash/composer.sh",
+        "prepare": "husky install",
         "dwatch": "webpack --watch --mode development --progress",
         "watch": "webpack --watch --mode production --progress",
         "dbuild": "webpack --mode development --progress",
@@ -54,7 +55,7 @@
         "glob": "^7.1.6",
         "html-loader": "^2.1.1",
         "html-webpack-plugin": "^5.2.0",
-        "husky": "^5.1.1",
+        "husky": "^6.0.0",
         "lint-staged": "^10.5.4",
         "mini-css-extract-plugin": "^1.3.9",
         "node-sass": "^5.0.0",
