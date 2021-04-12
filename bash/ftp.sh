@@ -3,9 +3,11 @@
 . $(pwd)"/bash/config.sh"
 . $(pwd)"/bash/deploy.sh"
 
-FILE="deploy_"$FILE
+ if [ "$FTP_PORT" = "" ]; then
+    FTP_PORT=21
+fi
 
-lftp $FTP_HOST << EOF
+lftp $FTP_HOST -p $FTP_PORT << EOF
     set ssl:verify-certificate false
     user $FTP_USER "$FTP_PASS"
     mirror \
@@ -20,3 +22,5 @@ lftp $FTP_HOST << EOF
         /$TARGET/$FILE $FTP_PATH
     bye
 EOF
+
+rm $TARGET/$FILE -Rfv
