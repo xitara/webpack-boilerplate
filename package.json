@@ -10,6 +10,7 @@
     },
     "scripts": {
         "install": "chmod 0755 ./bash/* && yarn build && bash ./bash/composer.sh",
+        "prepare": "husky install",
         "dwatch": "webpack --watch --mode development --progress",
         "watch": "webpack --watch --mode production --progress",
         "dbuild": "webpack --mode development --progress",
