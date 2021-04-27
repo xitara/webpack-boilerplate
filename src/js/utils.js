@@ -1,4 +1,7 @@
+import config from './config.js';
 import Mark from 'mark.js';
+
+console.log(config);
 
 /**
  * initiate list of event listeners
@@ -73,11 +76,20 @@ export const $trigger = (target, type) => {
 };
 
 /**
- * Scroll to a given position
+ * Scroll to a given position or a given element/selector
  *
- * @param  {integer} position position in pixel from top
+ * @param  {mixed} position|element     position in pixel from top or element
  */
 export const $scroll = (position, left = 0, behavior = 'smooth') => {
+    if (isNaN(position) && qs(position)) {
+        let box = qs(position).getBoundingClientRect();
+        position = box.top + window.scrollY - config.scrollOffset;
+    }
+
+    if (position < 1) {
+        return;
+    }
+
     window.scrollTo({
         top: position,
         left: left,
