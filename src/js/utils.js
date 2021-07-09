@@ -1,8 +1,6 @@
 import config from './config.js';
 import Mark from 'mark.js';
 
-console.log(config);
-
 /**
  * initiate list of event listeners
  *
@@ -79,6 +77,8 @@ export const $trigger = (target, type) => {
  * Scroll to a given position or a given element/selector
  *
  * @param  {mixed} position|element     position in pixel from top or element
+ * @param  {Number} left     position from left
+ * @param  {String} behavior auto|smooth, default: smooth
  */
 export const $scroll = (position, left = 0, behavior = 'smooth') => {
     if (isNaN(position) && qs(position)) {
@@ -167,6 +167,9 @@ export const $fetch = async (url, method = 'POST', payload = {}, mode = 'cors') 
     return data;
 };
 
+/**
+ * init mark.js to highlight search-phrases (?highlight=[TEXT])
+ */
 export const $mark = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const highlight = urlParams.get('highlight');
@@ -203,9 +206,6 @@ export const $sc = ($var, $value, $expire = 30) => {
     let date = new Date(this.valueOf());
     date.setDate(date.getDate() + $expire);
 
-    // eslint-disable-next-line
-    console.log('set cookie: ' + $var + '=' + $value + '; ' + date.toUTCString());
-
     if (!document.cookie.split('; ').find((row) => row.startsWith($var + '=' + $value))) {
         document.cookie = $var + '=' + $value + '; expires=' + date.toUTCString();
     }
@@ -219,9 +219,6 @@ export const $sc = ($var, $value, $expire = 30) => {
  * @return {null|bool|string}]     value if cookie exists and $value is null, true if value is given and same value as in cookie, false if value is given and not the same value as in cookie, null if $var not exists
  */
 export const $cc = ($var, $value = null) => {
-    // eslint-disable-next-line
-    console.log('check cookie: ' + $var + '=' + $value);
-
     if (document.cookie.split(';').some((item) => item.trim().startsWith($var + '='))) {
         const value = document.cookie
             .split('; ')
@@ -250,9 +247,6 @@ export const $cc = ($var, $value = null) => {
  * @return {bool}     true if cookie exists, false if no cookie found
  */
 export const $dc = ($var, $value) => {
-    // eslint-disable-next-line
-    console.log('delete cookie: ' + $var + '=' + $value);
-
     if (!document.cookie.split('; ').find((row) => row.startsWith($var + '=' + $value))) {
         document.cookie = $var + '=' + $value + '; expires=Thu, 01 Jan 1970 00:00:01 GMT';
         return true;
