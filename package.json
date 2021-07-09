@@ -9,7 +9,7 @@
         "url": "https://github.com/xitara/webpack-boilerplate.git"
     },
     "scripts": {
-        "install": "chmod 0755 ./bash/* && yarn build && bash ./bash/composer.sh",
+        "install": "chmod 0755 ./bash/* && yarn build && bash ./bash/setup.sh && bash ./bash/composer.sh",
         "prepare": "husky install",
         "dwatch": "webpack --watch --mode development --progress",
         "watch": "webpack --watch --mode production --progress",

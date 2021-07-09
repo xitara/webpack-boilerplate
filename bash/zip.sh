@@ -5,21 +5,22 @@
 yarn build
 
 MYDATE=$(date +"%Y-%m-%d_%H%M%S")
+TMP_TARGET="/tmp"
 
-if [ -d "$TARGET/$FILE" ]; then
-    mv "$TARGET/$FILE" "$TARGET/$FILE"_$MYDATE
+if [ -d "$TMP_TARGET/$FILE" ]; then
+    mv "$TMP_TARGET/$FILE" "$TMP_TARGET/$FILE"_$MYDATE
 fi
 
-mkdir $TARGET/$FILE
+mkdir $TMP_TARGET/$FILE
 
 for i in "${STORAGE[@]}"; do
     echo "$i";
 
     if [ -d "$i" ] || [ -f "$i" ]; then
-        cp -r "$i" "$TARGET/$FILE/$i"
+        cp -r "$i" "$TMP_TARGET/$FILE/$i"
     fi
 done
 
-cd $TARGET && zip -r $(pwd)/../$FILE.zip $FILE -x *.map*
+cd $TMP_TARGET && zip -r $TARGET/$FILE.zip $FILE -x *.map*
 
-rm -Rf $TARGET/$FILE
+rm -Rf $TMP_TARGET/$FILE
