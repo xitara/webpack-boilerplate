@@ -18,7 +18,6 @@
         "zip": "bash ./bash/zip.sh",
         "deploy": "bash ./bash/deploy.sh",
         "ftp": "bash ./bash/ftp.sh",
-        "fly": "yarn install && bash ./bash/composer.sh",
         "docs": "phpdoc && ./bash/startBrowser.sh ./docs/.build/index.html",
         "analyze": "webpack-bundle-analyzer ./stats.json",
         "lint-code": "eslint 'src/js/**/*.js' --fix",
