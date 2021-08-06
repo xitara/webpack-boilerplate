@@ -1,32 +1,36 @@
-#!bash
+#!/usr/bin/env bash
 
 # list of files and folder to pack/deploy. top: plugins, aber empty line, themes
 STORAGE=(
     *.php
     assets
     backend
+    behaviors
     classes
     components
     config
     console
     controllers
+    factories
     lang
     models
     partials
+    plugin.yaml
     reportwidgets
+    traits
     updates
     vendor
-    plugin.yaml
+    views
 
+    *manifest.json*
     content
+    favicon.ico*
     layouts
     meta
     pages
+    robots.txt
     theme.yaml
     version.yaml
-    favicon.ico*
-    robots.txt
-    *manifest.json*
 )
 
 # filename. default name from package.json example with jq (linux)
