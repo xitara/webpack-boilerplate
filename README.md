@@ -14,7 +14,7 @@ Otherwise clone the repo to a folder of your choice and change
 - `lftp` to upload with ftp by `yarn ftp`, testet on debian/buster
 
 ## Optional
-- `phpdoc` to generate docs with `yarn docs`. See [https://getcomposer.org/](https://getcomposer.org/) for details
+- `phpdoc` to generate docs with `yarn docs`. See [https://docs.phpdoc.org/3.0/](https://docs.phpdoc.org/3.0/) for details
 
 ## Quick start
 
