@@ -24,7 +24,7 @@
         "lint-style": "stylelint 'src/scss/**/*.{css,scss}' --fix",
         "check-eslint-config": "eslint-config-prettier .eslint",
         "check-stylelint-config": "stylelint-config-prettier-check",
-        "cleanup": "rimraf stats.json* && rimraf manifest.json && rimraf vendor && rimraf yarn*.lo* && rimraf composer.lock && rimraf favicon.ico* && rimraf assets && rimraf theme.yaml* && rimraf version.yaml* && rimraf config && rimraf index.html && rimraf robots.txt && rimraf node_modules && rimraf assets-manifest.json*",
+        "cleanup": "rimraf stats.json* && rimraf manifest.json && rimraf vendor && rimraf yarn*.lo* && rimraf composer.lock && rimraf favicon.ico* && rimraf assets && rimraf theme.yaml* && rimraf version.yaml* && rimraf config && rimraf index.html && rimraf robots.txt && rimraf node_modules && rimraf assets-manifest.json* && rimraf .husky",
         "start": "webpack-dev-server --open --mode development --progress",
         "oc-init-theme": "mkdir content && mkdir layouts && mkdir pages && mkdir partials",
         "oc-kill-theme": "rimraf content && rimraf layouts && rimraf pages && rimraf partials && rimraf static/theme.yaml && rimraf static/config"
