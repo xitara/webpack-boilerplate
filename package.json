@@ -24,7 +24,7 @@
         "lint-style": "stylelint 'src/scss/**/*.{css,scss}' --fix",
         "check-eslint-config": "eslint-config-prettier .eslint",
         "check-stylelint-config": "stylelint-config-prettier-check",
-        "cleanup": "rimraf stats.json* && rimraf manifest.json && rimraf vendor && rimraf yarn*.lo* && rimraf composer.lock && rimraf favicon.ico* && rimraf assets && rimraf theme.yaml* && rimraf version.yaml* && rimraf config && rimraf index.html && rimraf robots.txt && rimraf assets-manifest.json* && rimraf node_modules",
+        "cleanup": "rimraf stats.json* && rimraf manifest.json && rimraf vendor && rimraf yarn*.lo* && rimraf composer.lock && rimraf favicon.ico* && rimraf assets && rimraf theme.yaml* && rimraf version.yaml* && rimraf config && rimraf index.html && rimraf robots.txt && rimraf assets-manifest.json* && rimraf .husky && rimraf node_modules",
         "start": "webpack-dev-server --open --mode development --progress",
         "oc-init-theme": "mkdir content && mkdir layouts && mkdir pages && mkdir partials",
         "oc-kill-theme": "rimraf content && rimraf layouts && rimraf pages && rimraf partials && rimraf static/theme.yaml && rimraf static/config"
@@ -115,6 +115,7 @@
     "dependencies": {
         "glightbox": "^3.0.8",
         "mark.js": "^8.11.1",
+        "micromodal": "^0.4.6",
         "simplebar": "^5.3.2",
         "tiny-slider": "^2.9.3"
     }
