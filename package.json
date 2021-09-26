@@ -11,8 +11,8 @@
     "scripts": {
         "install": "chmod 0755 ./bash/* && yarn build && bash ./bash/setup.sh && bash ./bash/composer.sh",
         "prepare": "husky install",
-        "dwatch": "webpack --watch --mode development --progress",
-        "watch": "webpack --watch --mode production --progress",
+        "dwatch": "TAILWIND_MODE=watch webpack --watch --mode development --progress",
+        "watch": "TAILWIND_MODE=watch webpack --watch --mode production --progress",
         "dbuild": "webpack --mode development --progress",
         "build": "webpack --mode production --progress",
         "zip": "bash ./bash/zip.sh",

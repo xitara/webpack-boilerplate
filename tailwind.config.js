@@ -3,9 +3,8 @@ const colors = require('tailwindcss/colors')
 
 /* eslint-disable-next-line */
 module.exports = {
-    purge: {
-        content: ['./**/*.htm'],
-    },
+    mode: 'jit',
+    purge: ['./**/*.htm'],
     presets: [],
     darkMode: false, // or 'media' or 'class'
     theme: {
