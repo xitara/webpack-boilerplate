@@ -86,3 +86,9 @@ RewriteRule ^.*/themes/(.*)/(assets|resources)/(.*) /themes/$1/$2/$3 [L,NC]
 - Update to webpack 5
 - Update all dependencies
 - Add a fetch method to utils.js
+
+## Update 0.8.2
+
+- Add cross-env
+- Switch to tailwind JIT-compiler
+- Update all dependencies
