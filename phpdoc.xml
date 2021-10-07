@@ -14,6 +14,10 @@
             <source dsn=".">
                 <path>**/*.php</path>
             </source>
+            <ignore>
+                <path>vendor</path>
+                <path>node_modules</path>
+            </ignore>
         </api>
     </version>
 </phpdocumentor>
