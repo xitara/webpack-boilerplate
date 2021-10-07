@@ -18,7 +18,7 @@
         "zip": "bash ./bash/zip.sh",
         "deploy": "bash ./bash/deploy.sh",
         "ftp": "bash ./bash/ftp.sh",
-        "docs": "phpdoc && ./bash/startBrowser.sh ./docs/.build/index.html",
+        "docs": "phpdoc && ./bash/startBrowser.sh ./.docs/api/index.html 1> /dev/null 2> /dev/null",
         "analyze": "webpack-bundle-analyzer ./stats.json",
         "lint-code": "eslint 'src/js/**/*.js' --fix",
         "lint-style": "stylelint 'src/scss/**/*.{css,scss}' --fix",
