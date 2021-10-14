@@ -961,30 +961,6 @@ module.exports = {
         width: ['responsive'],
         wordBreak: ['responsive'],
         zIndex: ['responsive', 'focus-within', 'focus'],
-
-        // tailwindcss-typography
-        textIndent: ['responsive'],
-        textShadow: ['responsive'],
-        textDecorationStyle: ['responsive'],
-        textDecorationColor: ['responsive'],
-        ellipsis: ['responsive'],
-        hyphens: ['responsive'],
-        kerning: ['responsive'],
-        textUnset: ['responsive'],
-        fontVariantCaps: ['responsive'],
-        fontVariantLigatures: ['responsive'],
-        textRendering: ['responsive'],
     },
-    plugins: [
-        // tailwindcss-typography
-        // eslint-disable-next-line no-undef
-        require('tailwindcss-typography')({
-            // all these options default to the values specified here
-            ellipsis: true, // whether to generate ellipsis utilities
-            hyphens: true, // whether to generate hyphenation utilities
-            kerning: true, // whether to generate kerning utilities
-            textUnset: true, // whether to generate utilities to unset text properties
-            componentPrefix: 'c-', // the prefix to use for text style classes
-        }),
-    ],
+    plugins: [],
 };

@@ -109,15 +109,11 @@
         ]
     },
     "dependencies": {
-        "@tailwindcss/ui": "^0.7.2",
-        "alpinejs": "^3.4.2",
         "glightbox": "^3.1.0",
         "mark.js": "^8.11.1",
         "micromodal": "^0.4.6",
         "simplebar": "^5.3.6",
         "tailwindcss": "^2.2.16",
-        "tailwindcss-plugins": "^0.3.0",
-        "tailwindcss-typography": "^3.1.0",
         "tiny-slider": "^2.9.3"
     }
 }
