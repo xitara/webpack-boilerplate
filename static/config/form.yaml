@@ -1,49 +1,49 @@
 tabs:
     fields:
         name:
-            label: xitara.core::theme.site.name
+            label: xitara.nexus::theme.site.name
             default: xitara Werbeagentur
             span: auto
-            tab: xitara.core::theme.tab.site
+            tab: xitara.nexus::theme.tab.site
         color:
-            label: xitara.core::theme.site.color
+            label: xitara.nexus::theme.site.color
             default: '#ffffff'
             span: left
-            tab: xitara.core::theme.tab.site
+            tab: xitara.nexus::theme.tab.site
         author:
-            label: xitara.core::theme.site.author
-            default: xitara GmbH
+            label: xitara.nexus::theme.site.author
+            default: Xitara WebWorX
             span: auto
-            tab: xitara.core::theme.tab.site
+            tab: xitara.nexus::theme.tab.site
         publisher:
-            label: xitara.core::theme.site.publisher
-            default: xitara GmbH
+            label: xitara.nexus::theme.site.publisher
+            default: Xitara WebWorX
             span: auto
-            tab: xitara.core::theme.tab.site
+            tab: xitara.nexus::theme.tab.site
         copyright:
-            label: xitara.core::theme.site.copyright
-            default: xitara GmbH
+            label: xitara.nexus::theme.site.copyright
+            default: Xitara WebWorX
             span: auto
-            tab: xitara.core::theme.tab.site
+            tab: xitara.nexus::theme.tab.site
         phone:
-            label: xitara.core::theme.site.phone
+            label: xitara.nexus::theme.site.phone
             span: auto
-            tab: xitara.core::theme.tab.site
+            tab: xitara.nexus::theme.tab.site
         email:
-            label: xitara.core::theme.site.email
+            label: xitara.nexus::theme.site.email
             span: auto
-            tab: xitara.core::theme.tab.site
+            tab: xitara.nexus::theme.tab.site
         favicon_ico:
-            label: xitara.core::theme.site.favicon_ico
-            commentAbove: xitara.core::theme.site.favicon_ico_comment
+            label: xitara.nexus::theme.site.favicon_ico
+            commentAbove: xitara.nexus::theme.site.favicon_ico_comment
             span: auto
             type: mediafinder
             mode: image
-            tab: xitara.core::theme.tab.site
+            tab: xitara.nexus::theme.tab.site
         favicon:
-            label: xitara.core::theme.site.favicon
-            commentAbove: xitara.core::theme.site.favicon_comment
+            label: xitara.nexus::theme.site.favicon
+            commentAbove: xitara.nexus::theme.site.favicon_comment
             span: auto
             type: mediafinder
             mode: image
-            tab: xitara.core::theme.tab.site
+            tab: xitara.nexus::theme.tab.site
