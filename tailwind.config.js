@@ -9,11 +9,15 @@ module.exports = {
     darkMode: false, // or 'media' or 'class'
     theme: {
         screens: {
+            xs: '360px',
             sm: '640px',
             md: '768px',
             lg: '1024px',
             xl: '1280px',
             '2xl': '1536px',
+            xhd: '1921px',
+            '4k': '3840px',
+            '8k': '7680px',
         },
         colors: {
             transparent: 'transparent',
