@@ -1,3 +1,5 @@
+'use strict';
+
 // import './config.js';
 // import 'alpinejs';
 // import SimpleBar from 'simplebar';
