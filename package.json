@@ -72,6 +72,7 @@
         "stylelint-config-prettier": "^9.0.3",
         "stylelint-config-recommended": "^6.0.0",
         "stylelint-config-sass-guidelines": "^9.0.1",
+        "stylelint-config-standard-scss": "^3.0.0",
         "stylelint-prettier": "^1.2.0",
         "stylelint-scss": "^4.0.0",
         "webpack": "^5.61.0",
@@ -114,6 +115,7 @@
         "micromodal": "^0.4.6",
         "simplebar": "^5.3.6",
         "tailwindcss": "^2.2.19",
-        "tiny-slider": "^2.9.4"
+        "tiny-slider": "^2.9.4",
+        "vanilla-lazyload": "^17.5.0"
     }
 }
