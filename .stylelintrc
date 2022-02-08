@@ -1,9 +1,8 @@
 {
     "extends": [
-        "stylelint-config-recommended",
-        "stylelint-config-prettier",
+        "stylelint-config-standard-scss"
+        // "stylelint-config-recommended",
         "stylelint-prettier/recommended"
-        "stylelint-config-sass-guidelines",
     ],
     "plugins": [
         "stylelint-scss"

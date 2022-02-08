@@ -8,6 +8,13 @@ import config from '../config.js';
 let _listeners = [];
 
 /**
+ * initiate list of custom events
+ *
+ * @type {Array}
+ */
+let _events = [];
+
+/**
  * querySelector wrapper
  *
  * @param {string} selector Selector to query
@@ -41,6 +48,23 @@ export const $on = (target, type, callback, capture) => {
 };
 
 /**
+ * Attach a handler to an event for all elements matching a selector.
+ *
+ * @param {Element} target Element which the event must bubble to
+ * @param {string} selector Selector to match
+ * @param {string} type Event name
+ * @param {Function} handler Function called when the event bubbles to target
+ *                           from an element matching selector
+ * @param {boolean} [capture] Capture the event
+ * @param {Element} [scope] Optional scope element for the selector
+ */
+export const $delegate = (target, type, callback, capture, scope) => {
+    qsa(target, scope || document).forEach((el) => {
+        $on(el, type, dispatchEvent, !!capture);
+    });
+};
+
+/**
  * removeEventListener
  *
  * @param {Element|Window} target Target Element
@@ -61,62 +85,42 @@ export const $off = (target, type) => {
 };
 
 /**
+ * Register new event (old version for backward compatibility)
+ *
+ * @param {string} name the event
+ * @param {object} optional data
+ * @deprecated use $event instead
+ */
+export const $ev = (event, data = {}) => {
+    console.warn('$ev is deprecated, use $fire without event registering');
+    new CustomEvent(event, data);
+};
+
+/**
  * trigger event
  *
  * @param  {Element} el   element to trigger
  * @param  {string} type event-type (e.g. click) to trigger
  */
-export const $trigger = (target, type) => {
-    if (target) {
-        target.dispatchEvent(new Event(type));
+export const $trigger = (scope, type) => {
+    if (scope) {
+        scope.dispatchEvent(new CustomEvent(type));
     }
 };
 
 /**
- * Register new event
+ * Fire custom event initialiest by $event
  *
  * @param {string} name the event
- * @param {object} optional data
+ * @param {Element} target Element which the event must bubble to (default: document)
  */
-export const $event = (event, data = {}) => {
-    new CustomEvent(event, data);
-};
+export const $fire = (type, data, scope) => {
+    if (data || null === null) {
+        data = { detail: data };
+    }
 
-/**
- * Fire event
- *
- * @param {Element} target Element which the event must bubble to
- * @param {string} name the event
- */
-export const $fire = (elm, type) => {
-    let event = new Event(type);
-    elm.dispatchEvent(event);
-};
-
-/**
- * Attach a handler to an event for all elements matching a selector.
- *
- * @param {Element} target Element which the event must bubble to
- * @param {string} selector Selector to match
- * @param {string} type Event name
- * @param {Function} handler Function called when the event bubbles to target
- *                           from an element matching selector
- * @param {boolean} [capture] Capture the event
- */
-export const $delegate = (target, selector, type, handler, capture) => {
-    const dispatchEvent = (event) => {
-        const targetElement = event.target;
-        const potentialElements = target.querySelectorAll(selector);
-
-        for (let i = potentialElements.length; i >= 0; i--) {
-            if (potentialElements[i] === targetElement) {
-                handler.call(targetElement, event);
-                break;
-            }
-        }
-    };
-
-    $on(target, type, dispatchEvent, !!capture);
+    let event = new CustomEvent(type, data || {});
+    (scope || document).dispatchEvent(event);
 };
 
 /**
