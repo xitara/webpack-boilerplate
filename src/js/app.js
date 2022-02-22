@@ -8,6 +8,7 @@
 // import MicroModal from 'micromodal';
 // import LazyLoad from "vanilla-lazyload";
 // import { tns } from 'tiny-slider/src/tiny-slider';
+// import './modules/bootstrap-modules.js';
 // import './modules/markjs.js';
 // import './modules/smooth-scroll.js';
 // import './modules/timezone-offset.js';

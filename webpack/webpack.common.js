@@ -1,8 +1,10 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const PurgecssPlugin = require('purgecss-webpack-plugin')
+// const CssnanoPlugin = require('cssnano-webpack-plugin');
 const TailwindCSS = require('tailwindcss');
 const paths = require('./paths');
-
+const glob = require('glob');
 module.exports = {
     context: paths.src,
     entry: {
@@ -11,6 +13,18 @@ module.exports = {
     output: {
         filename: `assets/js/[name].js`,
         path: paths.build,
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                styles: {
+                    name: 'styles',
+                    test: /\.css$/,
+                    chunks: 'all',
+                    enforce: true
+                }
+            }
+        }
     },
     module: {
         rules: [{
@@ -94,6 +108,9 @@ module.exports = {
             patterns: [
                 { from: paths.static },
             ]
+        }),
+        new PurgecssPlugin({
+            paths: glob.sync(`${paths.src}{/*.htm,/**/*}`, { nodir: true }),
         }),
     ],
 };
