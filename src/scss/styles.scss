@@ -1,43 +1,52 @@
+/* Bootstrap */
+@use 'abstracts/bootstrap';
+
 /* Tailwindcss */
 /* see tailwind.config.js for configurations */
 /* purgecss start ignore */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
+// @use '~tailwindcss/base';
+// @use '~tailwindcss/components';
 /* purgecss end ignore */
-@import 'tailwindcss/utilities';
+// @use '~tailwindcss/utilities';
 
 /* Tiny-SLider */
-@import 'tiny-slider/src/tiny-slider';
-@import 'partials/slider';
+// @use 'partials/slider';
 
 // Lightbox SCSS (https://github.com/biati-digital/glightbox)
-@import 'glightbox/src/postcss/glightbox.css';
-@import 'partials/glightbox';
+// @use 'partials/glightbox';
 
 /* SimpleBar */
-@import 'simplebar/dist/simplebar.css';
-@import 'partials/simplebar';
+// @use 'partials/simplebar';
 
 /* Variables */
-@import 'base/variables';
+@use 'abstracts/variables';
 
 /* Breakpoints */
-@import 'base/breakpoints';
+@use 'abstracts/breakpoints';
 
 /* Mixins */
-@import 'base/mixins';
+@use 'abstracts/mixins';
 
 /* Fonts */
-@import 'base/fonts';
+@use 'abstracts/fonts';
 
 /* Body */
-@import 'partials/body';
+@use 'partials/body';
 
 /* Header */
-@import 'partials/header';
+@use 'partials/header';
 
 /* Footer */
-@import 'partials/footer';
+@use 'partials/footer';
 
 /* froala and fixes */
-@import 'partials/froala';
+@use 'partials/froala';
+
+.body123 {
+    @extend .vr;
+}
+
+main {
+    color: #0ff;
+    @extend h1;
+}
