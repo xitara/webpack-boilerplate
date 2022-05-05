@@ -1,10 +1,11 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const PurgecssPlugin = require('purgecss-webpack-plugin')
+// const PurgecssPlugin = require('purgecss-webpack-plugin')
 // const CssnanoPlugin = require('cssnano-webpack-plugin');
-const TailwindCSS = require('tailwindcss');
+// const TailwindCSS = require('tailwindcss');
 const paths = require('./paths');
 const glob = require('glob');
+
 module.exports = {
     context: paths.src,
     entry: {
@@ -50,13 +51,13 @@ module.exports = {
                             postcssOptions: {
                                 sourceMap: true,
                                 plugins: [
-                                    require('tailwindcss'),
+                                    // require('tailwindcss'),
                                     require('autoprefixer'),
                                     require('postcss-flexbugs-fixes'),
                                 ],
-                                postCss: [
-                                    TailwindCSS('tailwind.config.js'),
-                                ],
+                                // postCss: [
+                                    // TailwindCSS('tailwind.config.js'),
+                                // ],
                                 processCssUrls: false,
                             },
                         },
@@ -108,9 +109,6 @@ module.exports = {
             patterns: [
                 { from: paths.static },
             ]
-        }),
-        new PurgecssPlugin({
-            paths: glob.sync(`${paths.src}{/*.htm,/**/*}`, { nodir: true }),
         }),
     ],
 };
