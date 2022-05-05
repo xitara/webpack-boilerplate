@@ -49,4 +49,5 @@
 main {
     color: #0ff;
     @extend h1;
+    @extend .col-lg;
 }
