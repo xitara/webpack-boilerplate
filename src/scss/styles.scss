@@ -41,13 +41,3 @@
 
 /* froala and fixes */
 @use 'partials/froala';
-
-.body123 {
-    @extend .vr;
-}
-
-main {
-    color: #0ff;
-    @extend h1;
-    @extend .col-lg;
-}
