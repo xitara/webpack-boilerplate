@@ -1,0 +1,13 @@
+// A Hassle-Free Way to Self-Host Google Fonts - https://google-webfonts-helper.herokuapp.com/fonts
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/roboto-v20-latin-regular.eot');
+    src: local('Roboto'), local('Roboto-Regular'),
+        url('../fonts/roboto-v20-latin-regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/roboto-v20-latin-regular.woff2') format('woff2'),
+        url('../fonts/roboto-v20-latin-regular.woff') format('woff'),
+        url('../fonts/roboto-v20-latin-regular.ttf') format('truetype'),
+        url('../fonts/roboto-v20-latin-regular.svg#Roboto') format('svg');
+}

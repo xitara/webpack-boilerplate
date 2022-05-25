@@ -1,0 +1,12 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/colors' as c;
+
+body {
+    font-family: v.$font-1;
+    color: c.$brand-1;
+    background-color: c.$brand-bg-1;
+}
+
+main {
+    // margin-top: 8rem;
+}

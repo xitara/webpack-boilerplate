@@ -1,0 +1,36 @@
+.ss-result {
+    display: flex;
+    flex-wrap: wrap;
+
+    hr {
+        flex: 1 1 100%;
+        margin-bottom: 2rem;
+    }
+}
+
+.ss-result__aside {
+    padding-left: 3rem;
+}
+
+.ss-result__title {
+}
+
+.ss-result__badge {
+    font-size: .7em;
+    padding: .2em .5em;
+    border-radius: 4px;
+    margin-left: .75em;
+    background: #eee;
+    display: inline-block;
+}
+
+.ss-result__content {
+    flex-grow: 1;
+    flex-basis: 80%;
+}
+
+.ss-result__text {
+}
+
+.ss-result__url {
+}
