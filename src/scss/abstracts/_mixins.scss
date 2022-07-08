@@ -1,0 +1,36 @@
+@use 'sass:math';
+@use 'colors' as c;
+
+@mixin fullhd-container {
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin image-ratio($ratio: 1.5, $width: 100%) {
+    img {
+        width: $width;
+        height: inherit;
+        aspect-ratio: $ratio;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+@mixin scroll-to-top {
+    .scroll-to-top {
+        display: none;
+        position: fixed;
+        z-index: 99;
+        border: none;
+        outline: none;
+        color: c.$scroll-to-top-color;
+        background-color: c.$scroll-to-top-bg;
+        cursor: pointer;
+        font-size: 2rem;
+        bottom: 3rem;
+        right: 1rem;
+        border-radius: 0.75rem;
+        padding: 0.25rem 0.75rem 0.75rem 0.75rem;
+    }
+}

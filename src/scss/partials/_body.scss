@@ -1,1 +1,6 @@
 @use '../abstracts/bootstrap';
+@use '../abstracts/variables' as v;
+@use '../abstracts/colors' as c;
+@use '../abstracts/mixins' as m;
+
+@include m.scroll-to-top();

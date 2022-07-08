@@ -11,6 +11,7 @@
 // import './modules/bootstrap-modules.js';
 // import './modules/markjs.js';
 // import './modules/smooth-scroll.js';
+// import './modules/scroll-to-top.js';
 // import './modules/timezone-offset.js';
 import { $on, qs } from './modules/utils';
 
