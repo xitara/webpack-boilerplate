@@ -39,7 +39,7 @@ $bps: ();
 
     // create the 3 variations of breakpoints
     $bps: append($bps, ('#{$name}', $v1 $v2 $media)) !global;
-    $bps: append($bps, ('#{$name}-and-up', $v1 false $media)) !global;
+    $bps: append($bps, ('#{$name}-and-up', $v2 false $media)) !global;
     $bps: append($bps, ('#{$name}-and-down', false $v2 $media)) !global;
 }
 
