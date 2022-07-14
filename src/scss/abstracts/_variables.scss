@@ -1,117 +1,90 @@
-$blue: #0d6efd;
-$indigo: #6610f2;
-$purple: #6f42c1;
-$pink: #d63384;
-$red: #dc3545;
-$orange: #fd7e14;
-$yellow: #ffc107;
-$green: #198754;
-$teal: #20c997;
-$cyan: #0dcaf0;
-$white: #fff;
-$black: #000;
-$gray: #6c757d;
-$gray-dark: #344251;
-$gray-100: #f8f9fa;
-$gray-200: #e9ecef;
-$gray-300: #dee2e6;
-$gray-400: #ced4da;
-$gray-500: #adb5bd;
-$gray-600: #6c757d;
-$gray-700: #495057;
-$gray-800: #343a40;
-$gray-900: #212529;
-$primary: #0d6efd;
-$secondary: #6c757d;
-$success: #198754;
-$info: #0dcaf0;
-$warning: #ffc107;
-$danger: #dc3545;
-$light: #f8f9fa;
-$dark: #212529;
-$primary-rgb: 13, 110, 253;
-$secondary-rgb: 108, 117, 125;
-$success-rgb: 25, 135, 84;
-$info-rgb: 13, 202, 240;
-$warning-rgb: 255, 193, 7;
-$danger-rgb: 220, 53, 69;
-$light-rgb: 248, 249, 250;
-$dark-rgb: 33, 37, 41;
-$white-rgb: 255, 255, 255;
-$black-rgb: 0, 0, 0;
-$body-color-rgb: 33, 37, 41;
-$body-bg-rgb: 255, 255, 255;
-$font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-$font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-$gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-$body-font-family: $font-sans-serif;
-$body-font-size: 1rem;
-$body-font-weight: 400;
-$body-line-height: 1.5;
-$body-color: #212529;
-$body-bg: #fff;
+//@use '../abstracts/breakpoints' as *;
 
-$text-1: $gray-dark;
-$text-2: #E6AE76;
-$text-3: #B16F4D;
-$text-slogan: $text-2;
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
 
-$idea-bgc: #99ACBA;
+$font-1: Arial, serif;
+$font-2: Arial, serif;
+$font-3: Arial, serif;
+$font-4: Arial, serif;
 
-$slogan: #2C4351;
+// container (uncomment to override default)
+// $container-max-widths: (
+//     sm: 540px,
+//     md: 720px,
+//     lg: 960px,
+//     xl: 1140px,
+//     xxl: 1320px,
+// );
 
-$contact-bg: #B16F4D;
+// breakpoints (uncomment to override default)
+// $grid-breakpoints: (
+//     xs: 0,
+//     sm: 576px,
+//     md: 768px,
+//     lg: 992px,
+//     xl: 1200px,
+//     xxl: 1400px
+// );
+
+// $font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+// $font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+// $gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+// $body-font-family: $font-sans-serif;
+// $body-font-size: 1rem;
+// $body-font-weight: 400;
+// $body-line-height: 1.5;
 
 :root {
-    --bs-blue: #{$blue};
-    --bs-indigo: #{$indigo};
-    --bs-purple: #{$purple};
-    --bs-pink: #{$pink};
-    --bs-red: #{$red};
-    --bs-orange: #{$orange};
-    --bs-yellow: #{$yellow};
-    --bs-green: #{$green};
-    --bs-teal: #{$teal};
-    --bs-cyan: #{$cyan};
-    --bs-white: #{$white};
-    --bs-gray: #{$gray};
-    --bs-gray-dark: #{$gray-dark};
-    --bs-gray-100: #{$gray-100};
-    --bs-gray-200: #{$gray-200};
-    --bs-gray-300: #{$gray-300};
-    --bs-gray-400: #{$gray-400};
-    --bs-gray-500: #{$gray-500};
-    --bs-gray-600: #{$gray-600};
-    --bs-gray-700: #{$gray-700};
-    --bs-gray-800: #{$gray-800};
-    --bs-gray-900: #{$gray-900};
-    --bs-primary: #{$primary};
-    --bs-secondary: #{$secondary};
-    --bs-success: #{$success};
-    --bs-info: #{$info};
-    --bs-warning: #{$warning};
-    --bs-danger: #{$danger};
-    --bs-light: #{$light};
-    --bs-dark: #{$dark};
-    --bs-primary-rgb: #{$primary-rgb};
-    --bs-secondary-rgb: #{$secondary-rgb};
-    --bs-success-rgb: #{$success-rgb};
-    --bs-info-rgb: #{$info-rgb};
-    --bs-warning-rgb: #{$warning-rgb};
-    --bs-danger-rgb: #{$danger-rgb};
-    --bs-light-rgb: #{$light-rgb};
-    --bs-dark-rgb: #{$dark-rgb};
-    --bs-white-rgb: #{$white-rgb};
-    --bs-black-rgb: #{$black-rgb};
-    --bs-body-color-rgb: #{$body-color-rgb};
-    --bs-body-bg-rgb: #{$body-bg-rgb};
-    --bs-font-sans-serif: #{$font-sans-serif};
-    --bs-font-monospace: #{$font-monospace};
-    --bs-gradient: #{$gradient};
-    --bs-body-font-family: #{$body-font-family};
-    --bs-body-font-size: #{$body-font-size};
-    --bs-body-font-weight: #{$body-font-weight};
-    --bs-body-line-height: #{$body-line-height};
-    --bs-body-color: #{$body-color};
-    --bs-body-bg: #{$body-bg};
+//     --bs-blue: #{$blue};
+//     --bs-indigo: #{$indigo};
+//     --bs-purple: #{$purple};
+//     --bs-pink: #{$pink};
+//     --bs-red: #{$red};
+//     --bs-orange: #{$orange};
+//     --bs-yellow: #{$yellow};
+//     --bs-green: #{$green};
+//     --bs-teal: #{$teal};
+//     --bs-cyan: #{$cyan};
+//     --bs-white: #{$white};
+//     --bs-gray: #{$gray};
+//     --bs-gray-dark: #{$gray-dark};
+//     --bs-gray-100: #{$gray-100};
+//     --bs-gray-200: #{$gray-200};
+//     --bs-gray-300: #{$gray-300};
+//     --bs-gray-400: #{$gray-400};
+//     --bs-gray-500: #{$gray-500};
+//     --bs-gray-600: #{$gray-600};
+//     --bs-gray-700: #{$gray-700};
+//     --bs-gray-800: #{$gray-800};
+//     --bs-gray-900: #{$gray-900};
+//     --bs-primary: #{$primary};
+//     --bs-secondary: #{$secondary};
+//     --bs-success: #{$success};
+//     --bs-info: #{$info};
+//     --bs-warning: #{$warning};
+//     --bs-danger: #{$danger};
+//     --bs-light: #{$light};
+//     --bs-dark: #{$dark};
+//     --bs-primary-rgb: #{$primary-rgb};
+//     --bs-secondary-rgb: #{$secondary-rgb};
+//     --bs-success-rgb: #{$success-rgb};
+//     --bs-info-rgb: #{$info-rgb};
+//     --bs-warning-rgb: #{$warning-rgb};
+//     --bs-danger-rgb: #{$danger-rgb};
+//     --bs-light-rgb: #{$light-rgb};
+//     --bs-dark-rgb: #{$dark-rgb};
+//     --bs-white-rgb: #{$white-rgb};
+//     --bs-black-rgb: #{$black-rgb};
+//     --bs-body-color-rgb: #{$body-color-rgb};
+//     --bs-body-bg-rgb: #{$body-bg-rgb};
+//     --bs-font-sans-serif: #{$font-sans-serif};
+//     --bs-font-monospace: #{$font-monospace};
+//     --bs-gradient: #{$gradient};
+    --bs-body-font-family: #{$font-1};
+//     --bs-body-font-size: #{$body-font-size};
+//     --bs-body-font-weight: #{$body-font-weight};
+//     --bs-body-line-height: #{$body-line-height};
+//     --bs-body-color: #{$body-color};
+//     --bs-body-bg: #{$body-bg};
 }
