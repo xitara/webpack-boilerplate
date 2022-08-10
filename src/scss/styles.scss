@@ -19,7 +19,8 @@
 // @use 'partials/simplebar';
 
 /* Variables */
-// @use 'abstracts/variables';
+@use 'abstracts/variables';
+@use 'abstracts/root';
 
 /* Breakpoints */
 // @use 'abstracts/breakpoints';
