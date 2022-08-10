@@ -1,5 +1,5 @@
 /* Bootstrap */
-@use 'abstracts/bootstrap';
+// @use 'abstracts/bootstrap';
 
 /* Tailwindcss */
 /* see tailwind.config.js for configurations */
@@ -19,25 +19,25 @@
 // @use 'partials/simplebar';
 
 /* Variables */
-@use 'abstracts/variables';
+// @use 'abstracts/variables';
 
 /* Breakpoints */
-@use 'abstracts/breakpoints';
+// @use 'abstracts/breakpoints';
 
 /* Mixins */
-@use 'abstracts/mixins';
+// @use 'abstracts/mixins';
 
 /* Fonts */
-@use 'abstracts/fonts';
+// @use 'abstracts/fonts';
 
 /* Body */
 @use 'partials/body';
 
 /* Header */
-@use 'partials/header';
+// @use 'partials/header';
 
 /* Footer */
-@use 'partials/footer';
+// @use 'partials/footer';
 
 /* froala and fixes */
-@use 'partials/froala';
+// @use 'partials/froala';

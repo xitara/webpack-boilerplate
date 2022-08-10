@@ -267,3 +267,14 @@ export const $dc = ($var, $value) => {
 
     return false;
 };
+
+/**
+ * adds leading zero to digits from 0-9
+ *
+ * @param  {integer} num integer tha will become leading zero if needed
+ * @return {string}     interger with leading zero if possible
+ */
+export const lz = (num) => {
+    num = (num < 10 ? '0' : '') + num;
+    return num;
+};
