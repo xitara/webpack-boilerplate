@@ -8,13 +8,6 @@ import config from '../config.js';
 let _listeners = [];
 
 /**
- * initiate list of custom events
- *
- * @type {Array}
- */
-let _events = [];
-
-/**
  * querySelector wrapper
  *
  * @param {string} selector Selector to query
@@ -48,23 +41,6 @@ export const $on = (target, type, callback, capture) => {
 };
 
 /**
- * Attach a handler to an event for all elements matching a selector.
- *
- * @param {Element} target Element which the event must bubble to
- * @param {string} selector Selector to match
- * @param {string} type Event name
- * @param {Function} handler Function called when the event bubbles to target
- *                           from an element matching selector
- * @param {boolean} [capture] Capture the event
- * @param {Element} [scope] Optional scope element for the selector
- */
-export const $delegate = (target, type, callback, capture, scope) => {
-    qsa(target, scope || document).forEach((el) => {
-        $on(el, type, dispatchEvent, !!capture);
-    });
-};
-
-/**
  * removeEventListener
  *
  * @param {Element|Window} target Target Element
@@ -85,53 +61,85 @@ export const $off = (target, type) => {
 };
 
 /**
- * Register new event (old version for backward compatibility)
- *
- * @param {string} name the event
- * @param {object} optional data
- * @deprecated use $event instead
- */
-export const $ev = (event, data = {}) => {
-    console.warn('$ev is deprecated, use $fire without event registering');
-    new CustomEvent(event, data);
-};
-
-/**
  * trigger event
  *
  * @param  {Element} el   element to trigger
  * @param  {string} type event-type (e.g. click) to trigger
  */
-export const $trigger = (scope, type) => {
-    if (scope) {
-        scope.dispatchEvent(new CustomEvent(type));
+export const $trigger = (target, type) => {
+    if (target) {
+        target.dispatchEvent(new Event(type));
     }
 };
 
 /**
- * Fire custom event initialiest by $event
+ * Register new event
  *
  * @param {string} name the event
- * @param {Element} target Element which the event must bubble to (default: document)
+ * @param {object} optional data
  */
-export const $fire = (type, data, scope) => {
-    if (data || null === null) {
-        data = { detail: data };
-    }
-
-    let event = new CustomEvent(type, data || {});
-    (scope || document).dispatchEvent(event);
+export const $event = (event, data = {}) => {
+    new CustomEvent(event, data);
 };
 
 /**
- * Scroll to a given position
+ * Fire event
  *
- * @param  {integer} position position in pixel from top
+ * @param {Element} target Element which the event must bubble to
+ * @param {string} name the event
  */
-export const $scroll = (position, left = 0, behavior = 'smooth') => {
+export const $fire = (elm, type) => {
+    let event = new Event(type);
+    elm.dispatchEvent(event);
+};
+
+/**
+ * Attach a handler to an event for all elements matching a selector.
+ *
+ * @param {Element} target Element which the event must bubble to
+ * @param {string} selector Selector to match
+ * @param {string} type Event name
+ * @param {Function} handler Function called when the event bubbles to target
+ *                           from an element matching selector
+ * @param {boolean} [capture] Capture the event
+ */
+export const $delegate = (target, selector, type, handler, capture) => {
+    const dispatchEvent = (event) => {
+        const targetElement = event.target;
+        const potentialElements = target.querySelectorAll(selector);
+
+        for (let i = potentialElements.length; i >= 0; i--) {
+            if (potentialElements[i] === targetElement) {
+                handler.call(targetElement, event);
+                break;
+            }
+        }
+    };
+
+    $on(target, type, dispatchEvent, !!capture);
+};
+
+/**
+ * Scroll to a given position. If position is an element-name,
+ * scrollIntoView will be used, otherwise window.scrollTo().
+ *
+ * @param  {int|string} position pixel from top or element-name to scroll into
+ * @param  {String} align    start|center|end|nearest, default is nearest
+ * @param  {String} behavior smooth|auto, default is smooth
+ * @param  {Number} left     position from left, default 0. will be ignored if position is an element
+ */
+export const $scroll = (position, align = 'nearest', behavior = 'smooth', left = 0) => {
     if (isNaN(position) && qs(position)) {
-        let box = qs(position).getBoundingClientRect();
-        position = box.top + window.scrollY - config.scrollOffset;
+        // let box = qs(position).getBoundingClientRect();
+        // position = box.top + window.scrollY - config.scrollOffset;
+
+        qs(position).scrollIntoView({
+            behavior: behavior,
+            block: align,
+            inline: align,
+        });
+
+        return;
     }
 
     if (position < 1) {
@@ -266,15 +274,4 @@ export const $dc = ($var, $value) => {
     }
 
     return false;
-};
-
-/**
- * adds leading zero to digits from 0-9
- *
- * @param  {integer} num integer tha will become leading zero if needed
- * @return {string}     interger with leading zero if possible
- */
-export const lz = (num) => {
-    num = (num < 10 ? '0' : '') + num;
-    return num;
 };
