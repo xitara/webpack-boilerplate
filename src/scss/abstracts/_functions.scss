@@ -1,0 +1,13 @@
+@function sqrt($a, $iterations: 4) {
+    $x: 1;
+
+    @for $i from 1 through $iterations {
+        $x: ($x + $a / $x) / 2;
+    }
+
+    @return $x;
+}
+
+@function dcalc($length) {
+    @return sqrt(2 * $length);
+}

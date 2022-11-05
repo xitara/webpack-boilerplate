@@ -1,26 +1,119 @@
-$brand-color-1: #666;
-$brand-color-2: #666;
-$brand-color-3: #666;
-$brand-color-4: #666;
+@use 'sass:color';
 
-$brand-bg-1: #999;
-$brand-bg-2: #999;
-$brand-bg-3: #999;
-$brand-bg-4: #999;
+/* brand colors */
+$brand-color-1: #ffffff;
+$brand-color-2: #000000;
+$brand-color-3: #cccccc;
+$brand-color-4: #444444;
 
-$text-color-1: #fff;
-$text-color-2: #fff;
-$text-color-3: #fff;
-$text-color-4: #fff;
+/* text colors */
+$text-color-1: $brand-color-1;
+$text-color-2: $brand-color-2;
+$text-color-3: $brand-color-3;
+$text-color-4: $brand-color-4;
 
-$scroll-to-top-color: #fff;
-$scroll-to-top-bg: #000;
+/* text colors */
+$link-color-1: $brand-color-1;
+$link-color-2: $brand-color-2;
+$link-color-3: $brand-color-3;
+$link-color-4: $brand-color-4;
 
-$nav-color: #fff;
-$nav-active: #f00;
-$nav-bg: #333;
-$nav-burger: #fff;
-$nav-burger-active: #f00;
+/* background color */
+$bg-color-1: $brand-color-1;
+$bg-color-2: $brand-color-2;
+$bg-color-3: $brand-color-3;
+$bg-color-4: $brand-color-4;
+
+/* scroll to top colors if used */
+$scroll-to-top-color: $text-color-1;
+$scroll-to-top-bg: $bg-color-1;
+$scroll-to-top-border: 1px solid $brand-color-1;
+
+/* navigation and burger menu */
+$nav-text-color: $text-color-1;
+$nav-text-hover: $text-color-2;
+$nav-text-active: $text-color-2;
+$nav-bg-color: $bg-color-1;
+$nav-bg-hover: $bg-color-2;
+$nav-bg-active: $bg-color-2;
+
+$burger-text-color: $text-color-1;
+$burger-text-hover: $text-color-1;
+$burger-text-active: #f00;
+$burger-bg-color: $bg-color-1;
+$burger-bg-hover: $bg-color-1;
+$burger-bg-active: $bg-color-2;
+
+/**
+ * create other used colors automaticly
+ */
+/* create compliment rgb-raw-colors - without rgb() */
+$brand-raw-color-rgb-1: red($brand-color-1), green($brand-color-1), blue($brand-color-1);
+$brand-raw-color-rgb-2: red($brand-color-2), green($brand-color-2), blue($brand-color-2);
+$brand-raw-color-rgb-3: red($brand-color-3), green($brand-color-3), blue($brand-color-3);
+$brand-raw-color-rgb-4: red($brand-color-4), green($brand-color-4), blue($brand-color-4);
+
+$text-raw-color-rgb-1: red($text-color-1), green($text-color-1), blue($text-color-1);
+$text-raw-color-rgb-2: red($text-color-2), green($text-color-2), blue($text-color-2);
+$text-raw-color-rgb-3: red($text-color-3), green($text-color-3), blue($text-color-3);
+$text-raw-color-rgb-4: red($text-color-4), green($text-color-4), blue($text-color-4);
+
+$bg-raw-color-rgb-1: red($bg-color-1), green($bg-color-1), blue($bg-color-1);
+$bg-raw-color-rgb-2: red($bg-color-2), green($bg-color-2), blue($bg-color-2);
+$bg-raw-color-rgb-3: red($bg-color-3), green($bg-color-3), blue($bg-color-3);
+$bg-raw-color-rgb-4: red($bg-color-4), green($bg-color-4), blue($bg-color-4);
+
+/* create compliment rgba-raw-colors - without rgba() */
+$brand-raw-color-rgba-1: red($brand-color-1), green($brand-color-1), blue($brand-color-1), alpha($brand-color-1);
+$brand-raw-color-rgba-2: red($brand-color-2), green($brand-color-2), blue($brand-color-2), alpha($brand-color-2);
+$brand-raw-color-rgba-3: red($brand-color-3), green($brand-color-3), blue($brand-color-3), alpha($brand-color-3);
+$brand-raw-color-rgba-4: red($brand-color-4), green($brand-color-4), blue($brand-color-4), alpha($brand-color-4);
+
+$text-raw-color-rgba-1: red($text-color-1), green($text-color-1), blue($text-color-1), alpha($text-color-1);
+$text-raw-color-rgba-2: red($text-color-2), green($text-color-2), blue($text-color-2), alpha($text-color-2);
+$text-raw-color-rgba-3: red($text-color-3), green($text-color-3), blue($text-color-3), alpha($text-color-3);
+$text-raw-color-rgba-4: red($text-color-4), green($text-color-4), blue($text-color-4), alpha($text-color-4);
+
+$bg-raw-color-rgba-1: red($bg-color-1), green($bg-color-1), blue($bg-color-1), alpha($bg-color-1);
+$bg-raw-color-rgba-2: red($bg-color-2), green($bg-color-2), blue($bg-color-2), alpha($bg-color-2);
+$bg-raw-color-rgba-3: red($bg-color-3), green($bg-color-3), blue($bg-color-3), alpha($bg-color-3);
+$bg-raw-color-rgba-4: red($bg-color-4), green($bg-color-4), blue($bg-color-4), alpha($bg-color-4);
+
+/* add rgb() */
+$brand-color-rgb-1: unquote('rgb(#{$brand-raw-color-rgb-1})');
+$brand-color-rgb-2: unquote('rgb(#{$brand-raw-color-rgb-2})');
+$brand-color-rgb-3: unquote('rgb(#{$brand-raw-color-rgb-3})');
+$brand-color-rgb-4: unquote('rgb(#{$brand-raw-color-rgb-4})');
+$text-color-rgb-1: unquote('rgb(#{$text-raw-color-rgb-1})');
+$text-color-rgb-2: unquote('rgb(#{$text-raw-color-rgb-2})');
+$text-color-rgb-3: unquote('rgb(#{$text-raw-color-rgb-3})');
+$text-color-rgb-4: unquote('rgb(#{$text-raw-color-rgb-4})');
+$bg-color-rgb-1: unquote('rgb(#{$bg-raw-color-rgb-1})');
+$bg-color-rgb-2: unquote('rgb(#{$bg-raw-color-rgb-2})');
+$bg-color-rgb-3: unquote('rgb(#{$bg-raw-color-rgb-3})');
+$bg-color-rgb-4: unquote('rgb(#{$bg-raw-color-rgb-4})');
+
+/* add rgba() */
+$brand-color-rgba-1: unquote('rgba(#{$brand-raw-color-rgba-1})');
+$brand-color-rgba-2: unquote('rgba(#{$brand-raw-color-rgba-2})');
+$brand-color-rgba-3: unquote('rgba(#{$brand-raw-color-rgba-3})');
+$brand-color-rgba-4: unquote('rgba(#{$brand-raw-color-rgba-4})');
+$text-color-rgba-1: unquote('rgba(#{$text-raw-color-rgba-1})');
+$text-color-rgba-2: unquote('rgba(#{$text-raw-color-rgba-2})');
+$text-color-rgba-3: unquote('rgba(#{$text-raw-color-rgba-3})');
+$text-color-rgba-4: unquote('rgba(#{$text-raw-color-rgba-4})');
+$bg-color-rgba-1: unquote('rgba(#{$bg-raw-color-rgba-1})');
+$bg-color-rgba-2: unquote('rgba(#{$bg-raw-color-rgba-2})');
+$bg-color-rgba-3: unquote('rgba(#{$bg-raw-color-rgba-3})');
+$bg-color-rgba-4: unquote('rgba(#{$bg-raw-color-rgba-4})');
+
+/**
+ * define default bootstrap colors
+ */
+$body-color: $text-color-1;
+$body-color-rgb: $text-raw-color-rgb-1;
+$body-bg: $bg-color-1;
+$body-bg-rgb: $bg-raw-color-rgb-1;
 
 // $blue: #0d6efd;
 // $indigo: #6610f2;
@@ -63,7 +156,3 @@ $nav-burger-active: #f00;
 // $dark-rgb: 33, 37, 41;
 // $white-rgb: 255, 255, 255;
 // $black-rgb: 0, 0, 0;
-// $body-color-rgb: 33, 37, 41;
-// $body-bg-rgb: 255, 255, 255;
-// $body-color: #212529;
-// $body-bg: #fff;

@@ -16,7 +16,8 @@
 
 @use 'sass:map';
 @use 'sass:meta';
-@use 'bootstrap' as b;
+// @use 'bootstrap' as b;
+@use '../abstracts/variables' as v;
 
 // init list
 $bps: ();
@@ -111,7 +112,14 @@ $bps: ();
 
 // alias for breakpoint
 @mixin bp($name) {
-    @include breakpoint($name);
+    @warn "The bp() mixin is deprecated. Include breakpoint() instead.";
+    @include bp-mediaquery(
+        get-breakpoint(min, $name),
+        get-breakpoint(max, $name),
+        get-breakpoint(media, $name)
+    ) {
+        @content;
+    }
 }
 
 // generate breakpoint
@@ -154,8 +162,7 @@ $bps: ();
 // @include new-breakpoint(nav-l, nav-m 1850px);
 
 // set bootstrap breakpoints
-// @each $name, $width in b.$container-max-widths {
-@each $name, $width in b.$grid-breakpoints {
+@each $name, $width in v.$grid-breakpoints {
     @if variable-exists(oldName) {
         // @warn 'Exists: ' $oldName ' > ' $name ' > ' $width;
         @include new-breakpoint($name, $oldName $width);

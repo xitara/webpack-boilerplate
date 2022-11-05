@@ -1,5 +1,6 @@
 @use 'sass:math';
 @use 'colors' as c;
+// @forward 'breakpoints';
 
 /**
  * container for bigger displays than fullHD
@@ -50,5 +51,42 @@
         right: 1rem;
         border-radius: 0.75rem;
         padding: 0.25rem 0.75rem 0.75rem 0.75rem;
+    }
+}
+
+@mixin color-palette ($class, $base-color, $weight: 5) {
+    $bg-color: null;
+
+    @for $i from 1 through 9 {
+        @if $i < 5 {
+            $weight: $weight - 1;
+            $bg-color: lighten($base-color, $weight * 10%);
+        } @else if $i ==  5 {
+            $weight: 0;
+            $bg-color: $base-color;
+        } @else {
+            $weight: $weight + 1;
+            $bg-color: darken($base-color, $weight * 10%);
+        }
+
+        .#{$class}-#{$i}00 {
+            background-color: $bg-color;
+        }
+    }
+}
+
+@mixin link ($color, $text-decoration: none, $hover-color: $color, $hover-text-decoration: underline) {
+    a {
+        &:link,
+        &:visited,
+        &:active {
+            color: $color;
+            text-decoration: $text-decoration;
+        }
+
+        &:hover {
+            color: $hover-color;
+            text-decoration: $hover-text-decoration;
+        }
     }
 }

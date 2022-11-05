@@ -1,19 +1,25 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-// const PurgecssPlugin = require('purgecss-webpack-plugin')
-// const CssnanoPlugin = require('cssnano-webpack-plugin');
-// const TailwindCSS = require('tailwindcss');
+const TailwindCSS = require('tailwindcss');
 const paths = require('./paths');
-const glob = require('glob');
+// const glob = require('glob');
 
 module.exports = {
     context: paths.src,
     entry: {
         app: `./js/app.js`,
+        print: `./scss/print.scss`,
+        breakpoints: `./scss/breakpoints.scss`,
     },
     output: {
         filename: `assets/js/[name].js`,
         path: paths.build,
+    },
+    resolve: {
+        symlinks: false,
+    },
+    cache: {
+        type: 'memory',
     },
     optimization: {
         splitChunks: {
@@ -51,13 +57,13 @@ module.exports = {
                             postcssOptions: {
                                 sourceMap: true,
                                 plugins: [
-                                    // require('tailwindcss'),
+                                    require('tailwindcss'),
                                     require('autoprefixer'),
                                     require('postcss-flexbugs-fixes'),
                                 ],
-                                // postCss: [
-                                    // TailwindCSS('tailwind.config.js'),
-                                // ],
+                                postCss: [
+                                    TailwindCSS('tailwind.config.js'),
+                                ],
                                 processCssUrls: false,
                             },
                         },
