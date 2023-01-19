@@ -1,10 +1,11 @@
-# Webpack 5 ES6+ Sass Boilerplate with optional WinterCMS flavour [![devDependency Status](https://david-dm.org/xitara/webpack-boilerplate/dev-status.svg)](https://david-dm.org/xitara/webpack-boilerplate/?type=dev) [![Known Vulnerabilities](https://snyk.io/test/github/xitara/webpack-boilerplate/badge.svg)](https://snyk.io//test/github/xitara/webpack-boilerplate)
+# Webpack 5 ES6+ Sass Boilerplate [![Known Vulnerabilities](https://snyk.io/test/github/xitara/webpack-boilerplate/badge.svg)](https://snyk.io//test/github/xitara/webpack-boilerplate)
 
 ## Description
 
-A webpack 5 based boilerplate for WinterCMS or other web projects.
-In WinterCMS clone the repo and copy all files into the plugin or theme you want.
-Otherwise clone the repo to a folder of your choice and change
+A webpack 5 based boilerplate for web projects including JavaScript, ES6,
+Typescript, Babel and more.
+Clone the repo and copy all files into the project, you want.
+Otherwise clone the repo into a folder of your choice and change
 `STORAGE` in `bash/config.sh` if needed
 
 ## Dependencies
@@ -63,24 +64,6 @@ Otherwise clone the repo to a folder of your choice and change
 - sass
 - purgecss (for sass and tailwindcss)
 
-## WinterCMS specific commands
-
-- `wn-init-theme` - adds folders to create a complete [WinterCMS](https://wintercms.com) theme boilerplate
-- `wn-kill-theme` - removes folders for WinterCMS theme including `theme.yaml` and `conifg` from static. Handle with care, it's not recoverable
-
-## WinterCMS specific settings
-
-- add the following lines to your `.htaccess` to access the compiled index.html inside your theme dev:
-- it works with and without translation-prefix
-```
-##
-## enable display index.html for development
-##
-RewriteRule ^themes/.*/index\.html - [L,NC]
-RewriteRule ^.*/themes/(.*)/index\.html /themes/$1/index\.html [L,NC]
-RewriteRule ^.*/themes/(.*)/(assets|resources)/(.*) /themes/$1/$2/$3 [L,NC]
-```
-
 ## Update 0.8.1
 
 - Update to webpack 5
@@ -92,3 +75,10 @@ RewriteRule ^.*/themes/(.*)/(assets|resources)/(.*) /themes/$1/$2/$3 [L,NC]
 - Add cross-env
 - Switch to tailwind JIT-compiler
 - Update all dependencies
+
+## Update 0.8.3
+
+- Add typescript-support
+- Remove WinterCMS flavor
+- fix styles.scss
+- exclude README.md in /static from copy-webpack-plugin

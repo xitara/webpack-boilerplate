@@ -8,6 +8,7 @@ module.exports = {
     context: paths.src,
     entry: {
         app: `./js/app.js`,
+        app_ts: `./ts/app.ts`,
         print: `./scss/print.scss`,
         breakpoints: `./scss/breakpoints.scss`,
     },
@@ -38,6 +39,11 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
+            },
+            {
+                test: /\.ts?$/,
+                exclude: /node_modules/,
+                use: 'ts-loader',
             },
             {
                 test: /\.(sa|sc|c)ss$/,
@@ -112,9 +118,17 @@ module.exports = {
             chunkFilename: 'assets/css/[name].[id].css',
         }),
         new CopyWebpackPlugin({
-            patterns: [
-                { from: paths.static },
-            ]
+            patterns: [{
+                from: paths.static,
+                noErrorOnMissing: true,
+                globOptions: {
+                    dot: true,
+                    gitignore: true,
+                    ignore: [
+                        '**/README.md'
+                    ]
+                }
+            }]
         }),
     ],
 };
