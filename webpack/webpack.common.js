@@ -18,6 +18,7 @@ module.exports = {
     },
     resolve: {
         symlinks: false,
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
     cache: {
         type: 'memory',
@@ -123,7 +124,7 @@ module.exports = {
                 noErrorOnMissing: true,
                 globOptions: {
                     dot: true,
-                    gitignore: true,
+                    gitignore: false,
                     ignore: [
                         '**/README.md'
                     ]
