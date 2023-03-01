@@ -35,6 +35,7 @@ STORAGE=(
 
 # filename. default name from package.json example with jq (linux)
 FILE=$(cat package.json | jq -r .name)
+VERSION=$(cat package.json | jq -r .version)
 
 # target path
 TARGET="$(pwd)/.."
