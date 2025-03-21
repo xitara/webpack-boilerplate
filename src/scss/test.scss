@@ -20,3 +20,10 @@
 /* Fonts */
 // @use 'abstracts/fonts';
 /* purgecss stop ignore */
+
+header {
+    h1 {
+        opacity: 0;
+        color: #f00 !important;
+    }
+}
