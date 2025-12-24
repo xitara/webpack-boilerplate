@@ -19,6 +19,8 @@ yarn.lock
 *.br
 *manifest*
 .husky
+*.code-workspace
+/secure
 
 ### Composer ###
 composer.lock

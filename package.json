@@ -1,126 +1,135 @@
 {
-  "name": "webpack-boilerplate",
-  "version": "0.8.2",
-  "description": "Webpack based boilerplate including ES6, Babel, Sass and much more",
-  "author": "Manuel Burghammer",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/xitara/webpack-boilerplate.git"
-  },
-  "scripts": {
-    "install": "chmod 0755 ./bash/* && yarn build && bash ./bash/setup.sh && bash ./bash/composer.sh",
-    "prepare": "husky",
-    "dwatch": "cross-env TAILWIND_MODE=watch webpack --watch --mode development --progress",
-    "watch": "cross-env TAILWIND_MODE=watch webpack --watch --mode production --progress",
-    "dbuild": "webpack --mode development --progress",
-    "build": "webpack --mode production --progress",
-    "zip": "bash ./bash/zip.sh",
-    "deploy": "bash ./bash/deploy.sh",
-    "ftp": "bash ./bash/ftp.sh",
-    "docs": "phpdoc && ./bash/startBrowser.sh ./.docs/api/index.html 1> /dev/null 2> /dev/null",
-    "analyze": "webpack-bundle-analyzer ./stats.json",
-    "lint-code": "eslint 'src/js/**/*.js' --fix",
-    "lint-style": "stylelint 'src/scss/**/*.{css,scss}' --fix",
-    "check-eslint-config": "eslint-config-prettier .eslint",
-    "check-stylelint-config": "stylelint-config-prettier-check",
-    "cleanup": "rimraf stats.json* && rimraf manifest.json && rimraf vendor && rimraf yarn*.lo* && rimraf composer.lock && rimraf favicon.ico* && rimraf assets && rimraf theme.yaml* && rimraf version.yaml* && rimraf config && rimraf index.html* && rimraf robots.txt && rimraf assets-manifest.json* && rimraf .husky && rimraf node_modules",
-    "start": "webpack-dev-server --open --mode development --progress",
-    "wn-init-theme": "mkdir content && mkdir layouts && mkdir pages && mkdir partials",
-    "wn-kill-theme": "rimraf content && rimraf layouts && rimraf pages && rimraf partials && rimraf static/theme.yaml && rimraf static/config"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.24.0",
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
-    "@babel/plugin-transform-async-to-generator": "^7.23.3",
-    "@babel/plugin-transform-runtime": "^7.24.0",
-    "@babel/preset-env": "^7.24.0",
-    "@babel/runtime": "^7.24.0",
-    "autoprefixer": "^10.4.18",
-    "babel-loader": "^9.1.3",
-    "brotli-webpack-plugin": "^1.1.0",
-    "compression-webpack-plugin": "^11.1.0",
-    "copy-webpack-plugin": "^12.0.2",
-    "cross-env": "^7.0.3",
-    "css-loader": "^6.10.0",
-    "cssnano-webpack-plugin": "^1.0.3",
-    "csso-webpack-plugin": "^2.0.0-beta.3",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-prettier": "^5.1.3",
-    "extract-css-chunks-webpack-plugin": "^4.10.0",
-    "file-loader": "^6.2.0",
-    "glob": "^10.3.10",
-    "html-loader": "^5.0.0",
-    "html-webpack-plugin": "^5.6.0",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
-    "mini-css-extract-plugin": "^2.8.1",
-    "normalize.css": "^8.0.1",
-    "postcss": "^8.4.35",
-    "postcss-flexbugs-fixes": "^5.0.2",
-    "postcss-loader": "^8.1.1",
-    "prettier": "^3.2.5",
-    "purgecss-webpack-plugin": "^5.0.0",
-    "rimraf": "^5.0.5",
-    "sass": "^1.71.1",
-    "sass-loader": "^14.1.1",
-    "style-loader": "^3.3.4",
-    "stylelint": "^16.2.1",
-    "stylelint-cli": "^1.3.0",
-    "stylelint-config-prettier": "^9.0.5",
-    "stylelint-config-recommended": "^14.0.0",
-    "stylelint-config-sass-guidelines": "^11.0.0",
-    "stylelint-config-standard-scss": "^13.0.0",
-    "stylelint-prettier": "^5.0.0",
-    "stylelint-scss": "^6.1.0",
-    "ts-loader": "^9.5.1",
-    "typescript": "^5.3.3",
-    "webpack": "^5.90.3",
-    "webpack-assets-manifest": "^5.2.1",
-    "webpack-bundle-analyzer": "^4.10.1",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.2",
-    "webpack-merge": "^5.10.0",
-    "webpack-stats-plugin": "1.1.3"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn check-eslint-config && yarn lint-code && yarn check-stylelint-config && yarn lint-style"
+    "name": "webpack-boilerplate",
+    "version": "0.9.1.4",
+    "description": "Webpack based boilerplate including ES6, Babel, Sass and much more",
+    "author": "Manuel Burghammer",
+    "license": "MIT",
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/xitara/webpack-boilerplate.git"
+    },
+    "scripts": {
+        "install": "node ./scripts/composer.js",
+        "prepare": "husky",
+        "build": "node ./scripts/webpack-wrapper.js --mode production --progress",
+        "dbuild": "node ./scripts/webpack-wrapper.js --mode development --progress",
+        "watch": "cross-env TAILWIND_MODE=watch node ./scripts/webpack-wrapper.js --watch --mode production --progress",
+        "dwatch": "cross-env TAILWIND_MODE=watch node ./scripts/webpack-wrapper.js --watch --mode development --progress",
+        "build-all": "node ./scripts/build-all.js",
+        "icon-list": "node ./scripts/webpack-wrapper.js --mode development --progress --dev-only && node ./scripts/icon-list.js",
+        "docs": "node ./scripts/phpdoc.js && node ./scripts/start-browser.js ./.docs/api/index.html",
+        "analyze": "webpack-bundle-analyzer ./stats.json",
+        "lint-js": "eslint 'src/js/**/*.js' --fix",
+        "lint-ts": "eslint 'src/ts/**/*.ts' --fix",
+        "lint-style": "stylelint 'src/scss/**/*.{css,scss}' --fix",
+        "check-eslint-config": "eslint-config-prettier .eslint",
+        "check-stylelint-config": "stylelint-config-prettier-check",
+        "cleanup": "node ./scripts/cleanup.js",
+        "ncu": "ncu -u",
+        "start": "webpack-dev-server --open --mode development --progress"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.28.5",
+        "@babel/plugin-proposal-class-properties": "^7.18.6",
+        "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+        "@babel/plugin-transform-async-to-generator": "^7.27.1",
+        "@babel/plugin-transform-runtime": "^7.28.5",
+        "@babel/preset-env": "^7.28.5",
+        "@babel/runtime": "^7.28.4",
+        "@tailwindcss/postcss7-compat": "^2.2.17",
+        "autoprefixer": "^10.4.23",
+        "babel-loader": "^10.0.0",
+        "brotli-webpack-plugin": "^1.1.0",
+        "compression-webpack-plugin": "^11.1.0",
+        "copy-webpack-plugin": "^13.0.1",
+        "cross-env": "^10.1.0",
+        "css-loader": "^7.1.2",
+        "cssnano-webpack-plugin": "^1.0.3",
+        "csso-webpack-plugin": "^3.0.0",
+        "eslint": "^9.39.2",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-import": "^2.32.0",
+        "eslint-plugin-prettier": "^5.5.4",
+        "extract-css-chunks-webpack-plugin": "^4.10.0",
+        "file-loader": "^6.2.0",
+        "glob": "^13.0.0",
+        "html-loader": "^5.1.0",
+        "html-webpack-plugin": "^5.6.5",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.2.7",
+        "mini-css-extract-plugin": "^2.9.4",
+        "normalize.css": "^8.0.1",
+        "postcss": "^8.5.6",
+        "postcss-flexbugs-fixes": "^5.0.2",
+        "postcss-loader": "^8.2.0",
+        "prettier": "^3.7.4",
+        "purgecss-webpack-plugin": "^7.0.2",
+        "rimraf": "^6.1.2",
+        "sass": "^1.96.0",
+        "sass-loader": "^16.0.6",
+        "style-loader": "^4.0.0",
+        "stylelint": "^16.26.1",
+        "stylelint-cli": "^1.3.0",
+        "stylelint-config-prettier": "^9.0.5",
+        "stylelint-config-recommended": "^17.0.0",
+        "stylelint-config-sass-guidelines": "^12.1.0",
+        "stylelint-config-standard-scss": "^16.0.0",
+        "stylelint-prettier": "^5.0.3",
+        "stylelint-scss": "^6.13.0",
+        "terser-webpack-plugin": "^5.3.16",
+        "ts-loader": "^9.5.4",
+        "ts-node": "^10.9.2",
+        "tsx": "^4.21.0",
+        "typescript": "^5.9.3",
+        "webpack": "^5.103.0",
+        "webpack-assets-manifest": "^6.5.0",
+        "webpack-bundle-analyzer": "^5.1.0",
+        "webpack-cli": "^6.0.1",
+        "webpack-dev-server": "^5.2.2",
+        "webpack-merge": "^6.0.1",
+        "webpack-stats-plugin": "1.1.3"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged",
+            "pre-push": "yarn check-eslint-config && yarn lint-code && yarn check-stylelint-config && yarn lint-style"
+        }
+    },
+    "lint-staged": {
+        "*.js": [
+            "eslint --fix"
+        ],
+        "*.ts": [
+            "eslint --fix"
+        ],
+        "*.{css,scss}": [
+            "stylelint --fix"
+        ]
+    },
+    "dependencies": {
+        "@popperjs/core": "^2.11.8",
+        "bootstrap": "^5.3.8",
+        "glightbox": "^3.3.1",
+        "global": "^4.4.0",
+        "mark.js": "^8.11.1",
+        "micromodal": "^0.6.1",
+        "npm-check-updates": "^19.2.0",
+        "simplebar": "^6.3.3",
+        "tailwindcss": "^4.1.18",
+        "tiny-slider": "^2.9.4",
+        "vanilla-lazyload": "^19.1.3"
     }
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix"
-    ],
-    "*.{css,scss}": [
-      "stylelint --fix"
-    ]
-  },
-  "dependencies": {
-    "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.3",
-    "glightbox": "^3.2.0",
-    "mark.js": "^8.11.1",
-    "micromodal": "^0.4.10",
-    "simplebar": "^6.2.5",
-    "tailwindcss": "^3.4.1",
-    "tiny-slider": "^2.9.4",
-    "vanilla-lazyload": "^17.8.8"
-  }
 }

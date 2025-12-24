@@ -110,18 +110,6 @@ $bps: ();
     }
 }
 
-// alias for breakpoint
-@mixin bp($name) {
-    @warn "The bp() mixin is deprecated. Include breakpoint() instead.";
-    @include bp-mediaquery(
-        get-breakpoint(min, $name),
-        get-breakpoint(max, $name),
-        get-breakpoint(media, $name)
-    ) {
-        @content;
-    }
-}
-
 // generate breakpoint
 @mixin breakpoint($name) {
     @include bp-mediaquery(
@@ -149,9 +137,9 @@ $bps: ();
 // @include new-breakpoint(uhd, fullhd 3840px);
 // @include new-breakpoint(uhd2, uhd false);
 
-// @include new-breakpoint(phone, 0 20rem, screen); // 320px
-// @include new-breakpoint(tablet, phone 48rem); // 768px
-// @include new-breakpoint(desktop, tablet 75rem); // 1200px
+@include new-breakpoint(phone, 0 20rem, screen); // 320px
+@include new-breakpoint(tablet, phone 48rem); // 768px
+@include new-breakpoint(desktop, tablet 75rem); // 1200px
 // @include new-breakpoint(large-desktop, desktop false); // 1200px
 
 // @include new-breakpoint(phone-l, 0 320px);
@@ -171,7 +159,7 @@ $bps: ();
         @include new-breakpoint($name, 0 $width);
     }
     // @warn $name;
-    $oldName: $name;
+    // $oldName: $name;
 }
 
 // .example {

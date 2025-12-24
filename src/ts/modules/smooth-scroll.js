@@ -4,7 +4,8 @@ import { $on, qs, qsa } from './utils';
 /**
  * smooth scrolling on data-smooth-scroll
  */
-$on(document, 'DOMContentLoaded', () => {
+// $on(document, 'DOMContentLoaded', () => {
+export const smoothscroll = () => {
     qsa('[data-smooth-scroll]').forEach((elm) => {
         $on(elm, 'click', (ev) => {
             ev.preventDefault();
@@ -22,4 +23,5 @@ $on(document, 'DOMContentLoaded', () => {
             });
         });
     });
-});
+};
+// });

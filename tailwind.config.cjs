@@ -1,4 +1,3 @@
-// tailwind.config.js
 module.exports = {
     content: ['content/*.htm', 'layouts/*.htm', 'pages/*.htm', 'partials/*.htm'],
     mode: 'jit',
