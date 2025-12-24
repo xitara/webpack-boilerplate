@@ -1,92 +1,30 @@
-@use 'sass:math';
-@use 'colors' as c;
-// @forward 'breakpoints';
-
-/**
- * container for bigger displays than fullHD
- */
-@mixin fullhd-container {
-    max-width: 1920px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/**
- * formats image in given aspect-ratio
- * @param  {mixed} $ratio: 1.5           like 1.5 or 3/2 or similar (default 3/2 or 1.5)
- * @param  {[type]} $width: 100%          image width (default 100%)
- */
-@mixin image-ratio($ratio: 1.5, $width: 100%) {
-    max-height: inherit;
-    height: inherit;
-    margin: 0;
-    padding: 0;
-
-    img {
-        width: $width;
-        max-width: 100%;
-        height: inherit;
-        max-height: inherit;
-        aspect-ratio: $ratio;
-        object-fit: cover;
-        object-position: center;
+@mixin wobble($selector, $infinite: false, $delay: 0s) {
+    #{$selector} {
+        $animation-iteration: if($infinite, 'infinite', '1');
+        animation: btnWiggle 5s #{$animation-iteration} $delay;
     }
-}
 
-/**
- * default styles for scroll to top button
- */
-@mixin scroll-to-top {
-    .scroll-to-top {
-        display: none;
-        position: fixed;
-        z-index: 99;
-        border: none;
-        outline: none;
-        color: c.$scroll-to-top-color;
-        background-color: c.$scroll-to-top-bg;
-        cursor: pointer;
-        font-size: 2rem;
-        bottom: 3rem;
-        right: 1rem;
-        border-radius: 0.75rem;
-        padding: 0.25rem 0.75rem 0.75rem 0.75rem;
-    }
-}
-
-@mixin color-palette ($class, $base-color, $weight: 5) {
-    $bg-color: null;
-
-    @for $i from 1 through 9 {
-        @if $i < 5 {
-            $weight: $weight - 1;
-            $bg-color: lighten($base-color, $weight * 10%);
-        } @else if $i ==  5 {
-            $weight: 0;
-            $bg-color: $base-color;
-        } @else {
-            $weight: $weight + 1;
-            $bg-color: darken($base-color, $weight * 10%);
+    @keyframes btnWiggle {
+        0% {
+            transform: rotate(0deg);
         }
-
-        .#{$class}-#{$i}00 {
-            background-color: $bg-color;
+        2% {
+            transform: rotate(-3deg);
         }
-    }
-}
-
-@mixin link ($color, $text-decoration: none, $hover-color: $color, $hover-text-decoration: underline) {
-    a {
-        &:link,
-        &:visited,
-        &:active {
-            color: $color;
-            text-decoration: $text-decoration;
+        3.5% {
+            transform: rotate(3deg);
         }
-
-        &:hover {
-            color: $hover-color;
-            text-decoration: $hover-text-decoration;
+        5% {
+            transform: rotate(-3deg);
+        }
+        6.5% {
+            transform: rotate(3deg);
+        }
+        8% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(0deg);
         }
     }
 }

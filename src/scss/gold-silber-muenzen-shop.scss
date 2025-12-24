@@ -1,0 +1,132 @@
+// // #001v1
+// .products-grid .thumbnail-product {
+//     //border: 1px solid #767676 !important;
+//     box-shadow: #767676 0 1px 5px;
+// }
+
+// .carousel .thumbnail-product {
+//     border: none !important;
+// }
+
+// // #001v2
+// .products-grid .thumbnail-product {
+//     border: 1px solid #767676 !important;
+//     // box-shadow: #767676 0 1px 5px;
+// }
+
+// .carousel .thumbnail-product {
+//     border: none !important;
+// }
+
+// // #002v1
+// #content .col-sm-push-1 {
+//     //#artikellslick {
+//         width: 60%;
+//         padding: 0;
+//         margin: 0;
+//         left: 0;
+
+//         .slick-prev {
+//             left: 0;
+//         }
+
+//         .slick-next {
+//             right: 0;
+//         }
+
+//         img {
+//         }
+//     }
+// }
+
+// #003v1+2
+// #cart_navi {
+//     display: none;
+// }
+
+// // #003v2
+// .__new-wk-button {
+//     margin-bottom: 1.5em;
+//     width: calc(50% - 2rem);
+//     margin-left: auto;
+// }
+
+// #004v1+2
+.__new-div {
+    text-align: center;
+}
+
+.__new-ul {
+    text-align: left;
+    width: auto;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    list-style: none;
+    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+        padding-bottom: 0.5rem;
+        overflow-wrap: break-word;
+        flex: 0 0 auto;
+        padding-left: 0.5rem;
+
+        &:nth-of-type(odd) {
+            padding-left: 1rem;
+        }
+
+        span {
+            color: #69b526;
+            padding-right: 0.5rem;
+        }
+    }
+}
+
+// #005v1
+// .navbar-right {
+//     li {
+//         font-size: 25px;
+//     }
+// }
+
+// .navbar-header i.fa {
+//     font-size: 30px;
+//     padding-bottom: 1.5rem;
+// }
+
+// #006v1+2
+// .footnlinp input,
+// .footnlinp input:focus,
+// .footnlinp select,
+// .footnlinp select:focus {
+//     border: 1px solid #dbc158;
+// }
+
+// .footnlinp.padleft20 {
+//     padding-left: 15px !important;
+// }
+
+// // #006v2
+// .form-horizontal {
+//     > div:nth-of-type(5) {
+//         > div:first-child {
+//             width: 70%;
+//         }
+
+//         > div:last-child {
+//             width: 30%;
+//         }
+//     }
+
+//     > div:nth-of-type(7) {
+//         > div:first-child {
+//             width: 30%;
+//         }
+
+//         > div:last-child {
+//             width: 70%;
+//         }
+//     }
+// }

@@ -1,0 +1,42 @@
+// #015v1+2
+.__new-div {
+    display: block;
+    clear: both;
+
+    div {
+        display: flex;
+        font-size: min(max(12px, 3vw), 16px);
+        // font-size: 12px;
+        font-weight: normal;
+        height: 1.75rem;
+        padding: 0;
+        margin-top: -0.75rem;
+        // margin-bottom: 3rem;
+        //color: #6e6e6e;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 1.5rem;
+            //height: 2rem;
+            padding-right: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .__new-div {
+        margin-top: 0.5rem;
+        padding-top: 1.5rem;
+    }
+
+    .twt-checkout-header {
+        padding-top: 1.25rem;
+    }
+}
+
+// #015v2
+.__new-div {
+    margin-bottom: 2rem;
+}

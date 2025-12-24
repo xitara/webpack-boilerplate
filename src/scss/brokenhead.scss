@@ -1,0 +1,7 @@
+@use 'abstracts/mixins' as m;
+
+// #019v1
+// @include m.wobble('.btn.btn--checkout-proceed', false, 3s);
+
+// #019v2
+@include m.wobble('.btn.btn--checkout-proceed', true);
