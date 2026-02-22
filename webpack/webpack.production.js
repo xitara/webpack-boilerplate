@@ -1,4 +1,4 @@
-import WebpackAssetsManifest from 'webpack-assets-manifest';
+import { WebpackAssetsManifest } from 'webpack-assets-manifest';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CssoWebpackPlugin from 'csso-webpack-plugin';
 import { StatsWriterPlugin } from 'webpack-stats-plugin';
@@ -14,17 +14,20 @@ export const production = (config) => {
     /**
      * Create RegEx pattern to exclude dev entrypoints from minification
      */
-    const filePattern = Object.keys(config.entrypointsDev).length
-        ? new RegExp(
-              Object.values(config.entrypointsDev)
-                  .map((file) => {
-                      const fileName = file.split('/').pop();
-                      return fileName.replace('.ts', '.js').replace('.scss', '.css');
-                  })
-                  .map((name) => name.replace(/\./g, '\\.'))
-                  .join('|')
-          )
-        : undefined;
+    // const filePattern = Object.keys(config.entrypointsDev).length
+    //     ? new RegExp(
+    //           Object.values(config.entrypointsDev)
+    //               .map((file) => {
+    //                   const fileName = file.split('/').pop();
+    //                   return fileName.replace('.ts', '.js').replace('.scss', '.css');
+    //               })
+    //               .map((name) => name.replace(/\./g, '\\.'))
+    //               .join('|')
+    //       )
+    //     : undefined;
+
+    // console.log('Removing functions type:', typeof config.removeFunctions);
+    // console.log('Removing functions:', config.removeFunctions);
 
     return {
         optimization: {
@@ -55,6 +58,7 @@ export const production = (config) => {
                             reserved: config.reserveFunctions,
                         },
                         compress: {
+                            // pure_funcs: ['console.log'],
                             pure_funcs:
                                 process.custom['remove-functions'] === true ||
                                 process.custom['rf'] === true
@@ -83,7 +87,7 @@ export const production = (config) => {
             new WebpackAssetsManifest(),
             new MiniCssExtractPlugin({
                 filename: 'css/[name].css',
-                chunkFilename: 'assets/css/[id].css',
+                chunkFilename: 'css/[id].css',
             }),
             new CssoWebpackPlugin.default(),
         ],

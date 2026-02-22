@@ -3,22 +3,10 @@ import config from '../config';
 /**
  * Interface for event listeners
  */
-// interface Listener {
-//     target: Element | Window | Document;
-//     type: string;
-//     callback: EventListenerOrEventListenerObject;
-//     capture: boolean;
-// }
-
-// export let _listeners: Listener[] = [];
-
-/**
- * Interface for event listeners
- */
 interface Listener {
     type: string;
     callback: EventListenerOrEventListenerObject;
-    capture: boolean;
+    options: any;
 }
 
 /**
@@ -30,77 +18,61 @@ const listenersMap = new WeakMap<Element | Window | Document, Listener[]>();
  * querySelector wrapper
  *
  * @param {string} selector Selector to query
- * @param {Element} scope Optional scope element for the selector
- * @returns {Element | null} The matched element or null
+ * @param {Element} [scope] Optional scope element for the selector
  */
-export const qs = (selector: string, scope?: Element): Element | null => {
-    return (scope || document).querySelector<HTMLDivElement>(selector);
+export const qs = (selector: string, scope: Element = null) => {
+    return (scope || document).querySelector(selector) as HTMLElement;
 };
 
 /**
  * querySelectorAll wrapper
  *
  * @param {string} selector Selector to query
- * @param {Element} scope Optional scope element for the selector
- * @returns {Element[]} Array of matched elements
+ * @param {Element} [scope] Optional scope element for the selector
  */
-export const qsa = (selector: string, scope?: Element): Element[] => {
-    return Array.from((scope || document).querySelectorAll<HTMLDivElement>(selector));
+export const qsa = (selector: string, scope: Element = null) => {
+    return Array.from((scope || document).querySelectorAll(selector));
 };
 
 /**
  * addEventListener wrapper
  *
- * @param {Element | Window} target Target Element
+ * @param {Document|Element|Window} target Target Element
  * @param {string} type Event name to bind to
  * @param {EventListenerOrEventListenerObject} callback Event callback
- * @param {boolean} capture Capture the event
+ * @param {boolean} [options]  Event options
  */
 export const on = (
-    target: Element | Document | Window,
+    target: Document | Element | Window,
     type: string,
     callback: EventListenerOrEventListenerObject,
-    capture?: boolean
-): void => {
+    options: any = {}
+) => {
     const listeners = listenersMap.get(target) || [];
-    listeners.push({ type, callback, capture });
-    target.addEventListener(type, callback, capture);
-    listenersMap.set(target, listeners);
-
-    if (type === 'click') {
-        target.addEventListener('touchend', callback, capture);
-        listeners.push({ type: 'touchend', callback, capture });
+    listeners.push({ type: type, callback, ...options });
+    target.addEventListener(type, callback, { ...options });
+    if (type == 'click') {
+        listeners.push({ type: 'touchend', callback, ...options });
+        target.addEventListener('touchend', callback, { ...options });
     }
-};
 
-/**
- * Attach a handler to an event for all elements matching a selector.
- *
- * @param {Element} target Element which the event must bubble to
- * @param {string} selector Selector to match
- * @param {string} type Event name
- * @param {boolean} capture Capture the event
- */
-export const ona = (target: Element, selector: string, type: string, capture?: boolean): void => {
-    qsa(selector, target).forEach((el) => {
-        on(el, type, dispatchEvent, !!capture);
-    });
+    // console.log(listenersObj);
 };
 
 /**
  * removeEventListener
  *
- * @param {Element | Window} target Target Element
+ * @param {Document | Element | Window} target Target Element
  * @param {string} type Event name to remove
  */
-export const off = (target: Element | Window, type: string): void => {
+export const off = (target: Document | Element | Window, type: string): void => {
     const listeners = listenersMap.get(target);
     if (listeners) {
         listenersMap.set(
             target,
             listeners.filter((listener) => {
                 if (listener.type === type) {
-                    target.removeEventListener(type, listener.callback, listener.capture);
+                    target.removeEventListener(type, listener.callback);
                     return false;
                 }
                 return true;
@@ -175,36 +147,63 @@ export const scroll = (
 };
 
 /**
- * Fetch data from URL
+ * fetch data from url
  *
- * @param {string} url URL to fetch data from
- * @param {string} method Method to fetch (GET, POST, PUT, OPTIONS)
- * @param {object} payload JSON payload
- * @param {object} headers Headers for the request
- * @param {RequestMode} mode Mode like cors, no-cors, etc.
- * @returns {Promise<object>} JSON object
+ * for use with cors payload you have to enable put and options in the routing of laravel etc.
+ * Route::match(['put', 'options'], '/', function () {});
+ *
+ * call example:
+ * const data = fetchData([LUR]);
+ * data.then(data) => {
+ *     console.log(data);
+ * };
+ *
+ * @autor   mburghammer
+ * @date    2020-11-23T22:38:07+01:00
+ * @version 0.0.1
+ * @since   0.0.1
+ * @param   {string}    url     url to fetch data from
+ * @param   {string}    method  method to fetch (GET, POST, PUT, OPTIONS).
+ * @param   {object}    payload json payload
+ * @param   {object}    headers additional headers
+ * @param   {RequestMode}    mode    mode like cors, no-cors etc.
+ * @return  {object}            json-object
  */
 export const fetchData = async (
     url: string,
-    method: string = 'POST',
-    payload: object = {},
-    headers: object = {},
+    method: 'GET' | 'POST' | 'PUT' | 'OPTIONS' = 'POST',
+    payload: Record<string, any> = {},
+    headers: Record<string, string> = {},
     mode: RequestMode = 'cors'
-): Promise<object> => {
-    let response = await fetch(url, {
+): Promise<any> => {
+    console.log('dlb~ Url:', url);
+
+    let data = await fetch(url, {
         headers: {
             ...headers,
         },
         method: method,
         mode: mode,
-        body: JSON.stringify(payload),
-    });
+        // send no payload wenn method is GET
+        body: method == 'GET' ? null : JSON.stringify(payload),
+    })
+        .then((response) => {
+            console.log('dlb~', response);
+            if (response.ok) {
+                return Promise.resolve(response);
+            } else {
+                return Promise.reject(new Error('Failed to load'));
+            }
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch(function (error) {
+            return Promise.reject(new Error(error));
+        });
 
-    if (!response.ok) {
-        throw new Error('Failed to load');
-    }
-
-    return response.json();
+    return data;
 };
 
 /**
@@ -213,8 +212,17 @@ export const fetchData = async (
  * @param {string} paramName Name of query parameter
  * @returns {string | null} The value of the query parameter or null
  */
-export const getQueryParam = (paramName: string): string | null => {
-    const urlParams = new URLSearchParams(window.location.search);
+export const getQueryParam = (paramName: string, url: string | null = null): string | null => {
+    if (!url) url = window.location.search;
+
+    /**
+     * check if URL includes ? then split it to get the query part
+     */
+    if (url.includes('?')) {
+        url = url.split('?')[1];
+    }
+
+    const urlParams = new URLSearchParams(url);
     return urlParams.get(paramName);
 };
 
@@ -263,33 +271,67 @@ export const deleteCookie = (name: string, value: string): boolean => {
 };
 
 /**
- * Generate a random number between min and max
+ * Generate a random string without special chars.
  *
- * @param {number} min Minimum value
- * @param {number} max Maximum value
- * @returns {number} Random number
+ * @param {number} min - Lowest random number
+ * @param {number} max - Highest random number
+ * @return {number} The generated random number.
  */
-export const rand = (min: number, max: number): number => {
+export const randomNumber = (min: number, max: number): number => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
 /**
- * Observe mutations on a target element
+ * Generate a random string without special chars.
  *
- * @param {Element} target Target element to observe
+ * @param {number} length - The length of the string to generate.
+ * @return {string} The generated random string.
  */
-export const observe = (target: Element): void => {
-    let observer = new MutationObserver((mutations) => {
+export const randomString = (length: number = 20): string => {
+    let newString: string;
+    let possibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < length; i++) {
+        newString += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length));
+    }
+
+    return newString;
+};
+
+export const obs = (
+    parentSelector: string,
+    targetSelector: string,
+    callback: Function,
+    parameter: Array<any> = [],
+    throttleTime: number = 5000 // in Millisekunden
+) => {
+    console.debug('utils~ obs targetSelector: ', targetSelector);
+
+    let lastExecution = 0;
+
+    const observer = new MutationObserver((mutations) => {
+        const now = Date.now();
+
         mutations.forEach((mutation) => {
-            console.log('Mutation type:', mutation.type);
-            console.log('Added nodes:', mutation.addedNodes);
+            if (mutation.type === 'childList') {
+                const targetElement = qs(targetSelector);
+
+                if (targetElement && now - lastExecution > throttleTime) {
+                    console.debug('utils~ target element found: ', targetElement);
+                    console.log('utils~ obs callback: ', callback);
+
+                    lastExecution = now;
+                    callback(...parameter);
+                }
+            }
         });
     });
 
-    let config = {
-        childList: true,
-    };
-    observer.observe(target, config);
+    const parent = qs(parentSelector);
+    if (parent) {
+        observer.observe(parent, { childList: true, subtree: true });
+    } else {
+        console.warn('utils~ obs: Parent selector not found:', parentSelector);
+    }
 };
 
 /**
@@ -310,81 +352,36 @@ export const slugify = (string: string): string => {
         .replace(/-+$/, '');
 };
 
-/**
- * Add leading zero to a number
- *
- * @param {number} num Number to add leading zero
- * @returns {string} Number with leading zero
- */
-export const lz = (num: number): string => {
-    return (num < 10 ? '0' : '') + num;
-};
-
-/**
- * Inject a CSS file into the document
- *
- * @param {string} file CSS file to inject
- * @param {string} element Element to inject into
- */
-export const inject = (file: string, element: string = 'head'): void => {
-    const link = `<link type="text/css" rel="stylesheet" href="${file}" />`;
-    qs(element)?.insertAdjacentHTML('afterbegin', link);
-};
-
-/**
- * Async timeout
- *
- * @param {number} ms Milliseconds to wait
- * @returns {Promise<void>} Promise that resolves after the timeout
- */
-export const asyncTimeout = (ms: number): Promise<void> => {
+// await asyncTimeout(1000);
+export const asyncTimeout = (ms: number) => {
     return new Promise((resolve) => {
         setTimeout(resolve, ms);
     });
 };
 
-/**
- * Check if an email is valid
- *
- * @param {string} email Email to check
- * @returns {boolean} True if email is valid, false otherwise
- */
-export const checkMail = (email: string): boolean => {
-    const check = /^[\w-.]+@([\w-]+\.)+[\w-]{2,14}$/;
+export const checkMail = (email: string) => {
+    let check = /^[\w-.]+@([\w-]+\.)+[\w-]{2,14}$/;
     return check.test(email);
 };
 
-/**
- * Round a float to a specified number of digits
- *
- * @param {number} float Float to round
- * @param {number} digits Number of digits to round to
- * @param {string} separator Separator for decimal point
- * @returns {string} Rounded float as a string
- */
-export const round = (float: number, digits: number = 2, separator: string = ','): string => {
-    return float.toFixed(digits).replace('.', separator);
+export const round = (floatingNumber: number, digits = 2, separator = ',') => {
+    console.log('utils~ round: ', floatingNumber, digits, separator);
+    console.log('utils~ round toFixed: ', floatingNumber.toFixed(digits));
+    console.log('utils~ round toFixed: ', floatingNumber.toFixed(digits).replace('.', separator));
+
+    return floatingNumber.toFixed(digits).replace('.', separator);
 };
 
-/**
- * Get the viewport dimensions
- *
- * @returns {object} Viewport dimensions
- */
-export const viewport = (): { width: number; height: number } => {
+export const viewport = () => {
     return { width: window.innerWidth, height: window.innerHeight };
 };
 
-/**
- * Convert a string to a float
- *
- * @param {string} stringToConvert String to convert
- * @returns {number | null} Converted float or null
- */
-export const toFloat = (stringToConvert: string): number | null => {
-    if (stringToConvert === '') {
+export const toFloat = (stringToConvert: string, digits = 2) => {
+    if (stringToConvert == '') {
         return null;
     }
+
+    console.log('utils~ stringToConvert: ', stringToConvert);
 
     let cleanedString = stringToConvert.replace(/[^0-9\.,]/g, '');
     let commaCount = (cleanedString.match(/,/g) || []).length;
@@ -397,6 +394,7 @@ export const toFloat = (stringToConvert: string): number | null => {
         cleanedString = cleanedString.replace(/,/g, '');
     } else if (commaCount === 1 && dotCount === 0) {
         cleanedString = cleanedString.replace(/,/g, '.');
+        // } else if (commaCount === 0 && dotCount === 1) {
     } else if (commaCount === 1 && dotCount === 1) {
         if (cleanedString.indexOf(',') > cleanedString.indexOf('.')) {
             cleanedString = cleanedString.replace(/\./g, '');
@@ -406,5 +404,8 @@ export const toFloat = (stringToConvert: string): number | null => {
         }
     }
 
-    return parseFloat(cleanedString);
+    console.log('utils~ cleanedString: ', cleanedString);
+    console.log('utils~ parseFloat(cleanedString): ', parseFloat(cleanedString));
+
+    return parseFloat(parseFloat(cleanedString).toFixed(digits));
 };

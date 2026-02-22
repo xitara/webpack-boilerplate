@@ -37,6 +37,11 @@ export class Log {
         message: string | Array<any> | Object,
         data: Array<any> | Object | null = null
     ): void {
+        // console.log('%cDies ist eine Nachricht mit blauem Text und einem Emoji! 🚀', 'color: blue; font-size: 16px;');
+
+        // https://extern.conversion.consulting/cdn/logo_square.png
+        //background: url('https://support.google.com/favicon.ico') no-repeat;
+
         const css = `
             background: url(${Log.imageUrl}) no-repeat;
             background-size: ${Log.imageSize};
