@@ -34,8 +34,8 @@ export default (env, argv) => {
         entrypoints: {
             // ambitop: './ts/ambitop.ts',
             // brokenhead: './ts/brokenhead.ts',
-            // 'shop-raumweltenheiss': './ts/shop-raumweltenheiss.ts',
-            'gold-silber-muenzen-shop': './ts/gold-silber-muenzen-shop.ts',
+            'shop-raumweltenheiss': './ts/shop-raumweltenheiss.ts',
+            // 'gold-silber-muenzen-shop': './ts/gold-silber-muenzen-shop.ts',
             // 'snippet-debugger': './ts/snippet-debugger.ts',
             // app: './ts/app.ts',
             // app: `./js/app.js`,
@@ -58,7 +58,7 @@ export default (env, argv) => {
          * leave empty to disable
          * @type {string}
          */
-        library: [''],
+        library: [],
 
         /**
          * Define functions to keep unchanged in terser plugin

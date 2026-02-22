@@ -238,7 +238,7 @@ export const setCookie = (name: string, value: string, expire: number = 30): voi
  * @param {string} value Cookie value
  * @returns {boolean | string | null} Value if cookie exists and value is null, true if value is given and same value as in cookie, false if value is given and not the same value as in cookie, null if name not exists
  */
-export const checkCookie = (name: string, value?: string): boolean | string | null => {
+export const getCookie = (name: string, value?: string): boolean | string | null => {
     const cookie = document.cookie.split('; ').find((row) => row.startsWith(`${name}=`));
     if (!cookie) return null;
 
