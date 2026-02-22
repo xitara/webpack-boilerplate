@@ -1,3 +1,5 @@
+// import config from '../config.js';
+
 export class LocalStorage {
     prefix: string | null;
 
@@ -25,8 +27,16 @@ export class LocalStorage {
         return localStorage.removeItem(this.prefix + key);
     }
 
+    /**
+     * Remove only items from local storage with the prefix
+     */
     clear() {
-        return localStorage.clear();
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key && key.startsWith(this.prefix)) {
+                localStorage.removeItem(key);
+            }
+        }
     }
 }
 

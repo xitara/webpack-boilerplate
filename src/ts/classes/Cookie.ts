@@ -1,21 +1,10 @@
 export class Cookie {
-    /**
-     * set cookie
-     *
-     * @param  {string} key      cookie var
-     * @param  {string} value    cookie value (default is 0)
-     * @param  {number} expire   expire time in days. Default is 30 days
-     * @return {boolean}     true if cookie is set, false if cookie is not set
-     */
-    set(key: string, value: string | number = 0, expire: number = 30): boolean {
+    set(key: string, value: string, expire: number = 30) {
         let date = new Date();
         date.setDate(date.getDate() + expire);
 
-        if (document.cookie.split('; ').find((row) => row.startsWith(key + '=' + value))) {
+        if (!document.cookie.split('; ').find((row) => row.startsWith(key + '=' + value))) {
             document.cookie = key + '=' + value + '; expires=' + date.toUTCString();
-            return document.cookie
-                .split('; ')
-                .some((item) => item.trim().startsWith(key + '=' + value));
         }
     }
 
@@ -23,9 +12,13 @@ export class Cookie {
      * get cookie
      *
      * @param  {string} key      cookie var
-     * @return {null|bool|string}     value if cookie exists and value is null, true if value is given and same value as in cookie, false if value is given and not the same value as in cookie, null if key not exists
+     * @param  {string} value    cookie value
+     * @return {null|bool|string}]     value if cookie exists and value is null, true if value is given and same value as in cookie, false if value is given and not the same value as in cookie, null if key not exists
      */
-    get(key: string): null | boolean | string {
+    get(key: string) {
+        // eslint-disable-next-line
+        // console.log('get cookie: ' + key + '=' + value);
+
         if (document.cookie.split(';').some((item) => item.trim().startsWith(key + '='))) {
             const value = document.cookie
                 .split('; ')
@@ -45,23 +38,23 @@ export class Cookie {
      *
      * @param  {string} key      cookie var
      * @param  {string} value    cookie value
-     * @return {null|bool|string}     value if cookie exists and value is null, true if value is given and same value as in cookie, false if value is given and not the same value as in cookie, null if key not exists
+     * @return {null|bool|string}]     value if cookie exists and value is null, true if value is given and same value as in cookie, false if value is given and not the same value as in cookie, null if key not exists
      */
-    check(key: string, value: string | null = null): null | boolean | string {
+    check(key: string, value: string|null = null) {
         // eslint-disable-next-line
         // console.log('check cookie: ' + key + '=' + value);
 
         if (document.cookie.split(';').some((item) => item.trim().startsWith(key + '='))) {
-            const cookieValue = document.cookie
+            const value = document.cookie
                 .split('; ')
                 .find((row) => row.startsWith(key + '='))
                 .split('=')[1];
 
             if (value === null) {
-                return cookieValue;
+                return value;
             }
 
-            if (cookieValue === value) {
+            if (value == value) {
                 return true;
             }
 
@@ -76,9 +69,12 @@ export class Cookie {
      *
      * @param  {string} key      cookie var
      * @param  {string} value    cookie value
-     * @return {boolean}     true if cookie exists, false if no cookie found
+     * @return {bool}     true if cookie exists, false if no cookie found
      */
-    remove(key: string, value: string): boolean {
+    remove(key: string, value: string) {
+        // eslint-disable-next-line
+        // console.log('remove cookie: ' + key + '=' + value);
+
         if (!document.cookie.split('; ').find((row) => row.startsWith(key + '=' + value))) {
             document.cookie = key + '=' + value + '; expires=Thu, 01 Jan 1970 00:00:01 GMT';
             return true;
