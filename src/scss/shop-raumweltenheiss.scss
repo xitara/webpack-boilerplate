@@ -1,42 +1,114 @@
 // #015v1+2
-.__new-div {
-    display: block;
-    clear: both;
+// .__new-div {
+//     display: block;
+//     clear: both;
 
-    div {
-        display: flex;
-        font-size: min(max(12px, 3vw), 16px);
-        // font-size: 12px;
-        font-weight: normal;
-        height: 1.75rem;
-        padding: 0;
-        margin-top: -0.75rem;
-        // margin-bottom: 3rem;
-        //color: #6e6e6e;
-        justify-content: center;
-        align-items: center;
+//     div {
+//         display: flex;
+//         font-size: min(max(12px, 3vw), 16px);
+//         // font-size: 12px;
+//         font-weight: normal;
+//         height: 1.75rem;
+//         padding: 0;
+//         margin-top: -0.75rem;
+//         // margin-bottom: 3rem;
+//         //color: #6e6e6e;
+//         justify-content: center;
+//         align-items: center;
 
-        img {
-            width: 1.5rem;
-            //height: 2rem;
-            padding-right: 0.5rem;
-            padding-bottom: 0.5rem;
-        }
-    }
+//         img {
+//             width: 1.5rem;
+//             //height: 2rem;
+//             padding-right: 0.5rem;
+//             padding-bottom: 0.5rem;
+//         }
+//     }
+// }
+
+// @media screen and (max-width: 575px) {
+//     .__new-div {
+//         margin-top: 0.5rem;
+//         padding-top: 1.5rem;
+//     }
+
+//     .twt-checkout-header {
+//         padding-top: 1.25rem;
+//     }
+// }
+
+// // #015v2
+// .__new-div {
+//     margin-bottom: 2rem;
+// }
+
+// // #019v2
+// .__new-div2 {
+//     display: block;
+//     clear: both;
+
+//     div {
+//         display: flex;
+//         //font-size: min(max(12px, 3vw), 16px);
+//         font-size: 12px;
+//         font-weight: normal;
+//         height: 1.75rem;
+//         padding: 0;
+//         margin-top: -0.75rem;
+//         // margin-bottom: 3rem;
+//         //color: #6e6e6e;
+//         justify-content: center;
+//         align-items: center;
+
+//         img {
+//             width: 1.5rem;
+//             //height: 2rem;
+//             padding-right: 0.5rem;
+//             padding-bottom: 0.5rem;
+//         }
+//     }
+// }
+
+// .register--action {
+//     text-align: center !important;
+// }
+
+// .__new-div2 {
+//     margin-top: 1rem;
+// }
+
+// #018v2
+// #20v1+2+3
+section.lightgreen-bg {
+    display: none;
 }
 
-@media screen and (max-width: 575px) {
-    .__new-div {
-        margin-top: 0.5rem;
-        padding-top: 1.5rem;
-    }
-
-    .twt-checkout-header {
-        padding-top: 1.25rem;
-    }
+section.pros {
+    display: none;
 }
 
-// #015v2
-.__new-div {
-    margin-bottom: 2rem;
+.btn--inquiry {
+    margin-top: 1rem;
+}
+
+// #20v2
+.ordering-hotline.mobile {
+    width: 140px !important;
+}
+    
+.ordering-hotline.mobile a {
+    display: flex;
+}
+
+// #20v3
+.ordering-hotline.mobile {
+    width: 210px !important;
+}
+    
+.ordering-hotline.mobile a {
+    display: flex;
+}
+    
+.ordering-hotline.mobile a div:last-child {
+    width: 100% !important;
+    text-align: left;
 }
